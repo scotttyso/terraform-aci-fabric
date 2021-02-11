@@ -1,1 +1,39 @@
-# terraform-aci
+# Terraform ACI Service Module
+
+The Cisco ACI Terraform Provider is available in the Terraform Registry at <https://registry.terraform.io/providers/CiscoDevNet/aci/latest>.  This repository contains example modules that use the provider to create terraform configuration files.
+
+This Modules and it's sub-modules are used to Automate an ACI Fabric Deployment, using the ACI provider available through the [Terraform registry](<https://registry.terraform.io/providers/CiscoDevNet/aci/latest>).
+<!-- Inspired by and adapted from [this doc](https://registry.terraform.io/providers/CiscoDevNet/aci/latest) -->
+and its [source code](<https://github.com/CiscoDevNet/terraform-provider-aci>).
+
+## Assumptions
+
+* You want to deploy an ACI Fabric and manage it through Terraform Cloud.
+
+## Important Note
+
+This platform is currently in Early Access and comes with no support.  Please contact your Cisco Sales Representative regarding any issues/feature requests.
+
+## Usage Example
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >=0.14.5 |
+| ACI | >=0.5.4 |
+
+## Providers
+
+No provider.
+
+## Inputs
+
+No input.
+
+## Outputs
+
+No output.
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
