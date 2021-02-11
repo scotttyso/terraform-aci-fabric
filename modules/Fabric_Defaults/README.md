@@ -5,7 +5,7 @@
 ```hcl
 module "Fabric_Defaults" {
 
-  source = "terraform-cisco-modules/terraform-aci/modules/Fabric_Policies/Fabric_Defaults"
+  source = "terraform-cisco-modules/terraform-aci/modules/Fabric_Defaults"
 
   # omitted...
 }
