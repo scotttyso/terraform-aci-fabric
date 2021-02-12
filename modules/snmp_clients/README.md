@@ -68,10 +68,10 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| snmp\_client | Map of settings to be be merged with the defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
-| snmp\_client\_defaults | Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control). | <pre>object({<br>    client_grp = string<br>    client     = string<br>    mgmt       = string<br>    epg        = string<br>  })</pre> | <pre>{<br>  "client": "198.18.1.1",<br>  "client_grp": "default_oob",<br>  "epg": "default",<br>  "mgmt": "oob"<br>}</pre> | no |
-| snmp\_client\_grp | Map of settings to be be merged with the defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
-| snmp\_client\_grp\_defaults | Client Group, Mgmt Domain, and Associated EPG. | <pre>object({<br>    name = string<br>    mgmt = string<br>    epg  = string<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "name": "default_oob"<br>}</pre> | no |
+| snmp\_client | Map of settings to be be merged with the snmp\_client\_defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
+| snmp\_client\_defaults | Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control). | <pre>object({<br>    client     = string<br>    client_grp = string<br>    epg        = string<br>    mgmt       = string<br>  })</pre> | <pre>{<br>  "client": "198.18.1.1",<br>  "client_grp": "default_oob",<br>  "epg": "default",<br>  "mgmt": "oob"<br>}</pre> | no |
+| snmp\_client\_grp | Map of settings to be be merged with the snmp\_client\_grp\_defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
+| snmp\_client\_grp\_defaults | Client Group, Mgmt Domain, and Associated EPG. | <pre>object({<br>    epg  = string<br>    mgmt = string<br>    name = string<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "name": "default_oob"<br>}</pre> | no |
 
 ## Outputs
 

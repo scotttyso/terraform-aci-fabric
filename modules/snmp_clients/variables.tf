@@ -1,39 +1,39 @@
 variable "snmp_client_grp_defaults" {
   description = "Client Group, Mgmt Domain, and Associated EPG."
   type = object({
-    name = string
-    mgmt = string
     epg  = string
+    mgmt = string
+    name = string
   })
   default = {
-    name = "default_oob"
-    mgmt = "oob"
     epg  = "default"
+    mgmt = "oob"
+    name = "default_oob"
   }
 }
 
 variable "snmp_client_defaults" {
   description = "Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control)."
   type = object({
-    client_grp = string
     client     = string
-    mgmt       = string
+    client_grp = string
     epg        = string
+    mgmt       = string
   })
   default = {
-    client_grp = "default_oob"
     client     = "198.18.1.1"
-    mgmt       = "oob"
+    client_grp = "default_oob"
     epg        = "default"
+    mgmt       = "oob"
   }
 }
 
 variable "snmp_client_grp" {
-  description = "Map of settings to be be merged with the defaults. Allowed keys are the same as for defaults."
+  description = "Map of settings to be be merged with the snmp_client_grp_defaults. Allowed keys are the same as for defaults."
 }
 
 variable "snmp_client" {
-  description = "Map of settings to be be merged with the defaults. Allowed keys are the same as for defaults."
+  description = "Map of settings to be be merged with the snmp_client_defaults. Allowed keys are the same as for defaults."
 }
 
 locals {
