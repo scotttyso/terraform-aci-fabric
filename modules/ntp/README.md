@@ -25,3 +25,38 @@ API Information:
 GUI Location:
 
 *-* Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers
+
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | > 0.14 |
+| aci | >= 0.5.2 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aci | >= 0.5.2 |
+
+## Modules
+
+No Modules.
+
+## Resources
+
+| Name |
+|------|
+| [aci_rest](https://registry.terraform.io/providers/ciscodevnet/aci/0.5.2/docs/resources/rest) |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| ntp | Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true). | <pre>object({<br>    ntp_server = string<br>    preferred  = bool<br>    mgmt       = string<br>    epg        = string<br>  })</pre> | n/a | yes |
+
+## Outputs
+
+No output.
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
