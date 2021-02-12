@@ -32,3 +32,11 @@ locals {
   }
   merged_snmp_client = merge(local.default_snmp_client, var.snmp_client)
 }
+
+output "test1" {
+  value = local.merged_snmp_client_grp
+}
+
+output "test2" {
+  value = local.merged_snmp_client
+}
