@@ -73,5 +73,8 @@ No Modules.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| test1 | n/a |
+| test2 | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
