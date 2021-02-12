@@ -68,13 +68,10 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| snmp\_client | Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control). | <pre>object({<br>    client_grp = string<br>    client     = string<br>    mgmt       = string<br>    epg        = string<br>  })</pre> | n/a | yes |
-| snmp\_client\_grp | Client Group, Mgmt Domain, and Associated EPG. | <pre>object({<br>    name = string<br>    mgmt = string<br>    epg  = string<br>  })</pre> | n/a | yes |
+| snmp\_client | Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control). | <pre>object({<br>    client_grp = string # default: 'default_oob'<br>    client     = string # default: '198.18.1.1'<br>    mgmt       = string # default: 'oob'<br>    epg        = string # default: 'default'<br>  })</pre> | n/a | yes |
+| snmp\_client\_grp | Client Group, Mgmt Domain, and Associated EPG. | <pre>object({<br>    name = string # default: 'default_oob'<br>    mgmt = string # default: 'oob'<br>    epg  = string # default: 'default'<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "name": "default_oob"<br>}</pre> | no |
 
 ## Outputs
 
-| Name | Description |
-|------|-------------|
-| test1 | n/a |
-| test2 | n/a |
+No output.
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
