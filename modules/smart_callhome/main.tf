@@ -5,50 +5,44 @@ API Information:
 GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Smart Callhome > [Smart CallHome Dest Group]
 */
-resource "aci_rest" "SmartCallHome_dg" {
-  path       = "/api/node/mo/uni/fabric/smartgroup-SmartCallHome_dg.json"
+resource "aci_rest" "SmartCallHome_destGrp" {
+  path       = "/api/node/mo/uni/fabric/smartgroup-${var.dest_group}.json"
   class_name = "callhomeSmartGroup"
   payload    = <<EOF
 {
     "callhomeSmartGroup": {
         "attributes": {
-            "dn": "uni/fabric/smartgroup-SmartCallHome_dg",
-            "name": "SmartCallHome_dg",
-            "rn": "smartgroup-SmartCallHome_dg"
+            "dn": "uni/fabric/smartgroup-${var.dest_group}",
+            "name": "${var.dest_group}",
         },
         "children": [
             {
                 "callhomeProf": {
                     "attributes": {
-                        "dn": "uni/fabric/smartgroup-SmartCallHome_dg/prof",
-                        "port": "{{SMTP_Port}}",
-                        "from": "{{From_Email}}",
-                        "replyTo": "{{Reply_Email}}",
-                        "email": "{{To_Email}}",
-{%- if Phone_Number %}
-                        "phone": "{{Phone_Number}}",{% endif %}
-{%- if Contact_Info %}
-                        "contact": "{{Contact_Info}}",{% endif %}
-{%- if Street_Address %}
-                        "addr": "{{Street_Address}}",{% endif %}
-                        "contract": "{{Contract_ID}}",
-                        "customer": "{{Customer_Identifier}}",
-                        "site": "{{Site_Identifier}}",
-                        "rn": "prof"
+                        "dn": "uni/fabric/smartgroup-${var.dest_group}/prof",
+                        "port": "${var.smtp_port}",
+                        "from": "${var.from_email}",
+                        "replyTo": "${var.reply_email}",
+                        "email": "${var.to_email}",
+                        "phone": "${var.phone_number}",
+                        "contact": "${var.contact_info}",
+                        "addr": "${var.street_addr}",
+                        "contract": "${var.contract_id}",
+                        "customer": "${var.customer_id}",
+                        "site": "${var.site_id}"
                     },
                     "children": [
                         {
                             "callhomeSmtpServer": {
                                 "attributes": {
-                                    "dn": "uni/fabric/smartgroup-SmartCallHome_dg/prof/smtp",
-                                    "host": "{{SMTP_Relay}}",
-                                    "rn": "smtp"
+                                    "dn": "uni/fabric/smartgroup-${var.dest_group}/prof/smtp",
+                                    "host": "${var.smtp_relay}"
                                 },
                                 "children": [
                                     {
                                         "fileRsARemoteHostToEpg": {
                                             "attributes": {
-                                                "tDn": "uni/tn-mgmt/mgmtp-default/{{Mgmt_Domain}}"
+                                                "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
                                             },
                                             "children": []
                                         }
@@ -62,11 +56,10 @@ resource "aci_rest" "SmartCallHome_dg" {
             {
                 "callhomeSmartDest": {
                     "attributes": {
-                        "dn": "uni/fabric/smartgroup-SmartCallHome_dg/smartdest-SCH_Receiver",
-                        "name": "SCH_Receiver",
-                        "email": "{{Reply_Email}}",
-                        "format": "short-txt",
-                        "rn": "smartdest-SCH_Receiver"
+                        "dn": "uni/fabric/smartgroup-${var.dest_group}/smartdest-${var.receiver}",
+                        "name": "${var.receiver}",
+                        "email": "${var.reply_email}",
+                        "format": "short-txt"
                     },
                     "children": []
                 }
@@ -84,7 +77,7 @@ API Information:
 GUI Location:
  - Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Smart CallHome Source
 */
-resource "aci_rest" "callhomeSmartSrc" {
+resource "aci_rest" "SmartCallHome_Src" {
   path       = "/api/node/mo/uni/infra/moninfra-default/smartchsrc.json"
   class_name = "callhomeSmartSrc"
   payload    = <<EOF
@@ -92,13 +85,12 @@ resource "aci_rest" "callhomeSmartSrc" {
     "callhomeSmartSrc": {
         "attributes": {
             "dn": "uni/infra/moninfra-default/smartchsrc",
-            "rn": "smartchsrc"
         },
         "children": [
             {
                 "callhomeRsSmartdestGroup": {
                     "attributes": {
-                        "tDn": "uni/fabric/smartgroup-SmartCallHome_dg"
+                        "tDn": "uni/fabric/smartgroup-${var.dest_group}"
                     },
                     "children": []
                 }

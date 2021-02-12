@@ -1,8 +1,8 @@
 variable "ntp" {
-  description = "Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true)"
+  description = "Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true)."
   type = object({
     ntp_server = string
-    preferred  = string
+    preferred  = bool
     mgmt       = string
     epg        = string
   })
@@ -11,7 +11,7 @@ variable "ntp" {
 locals {
   default_ntp = {
     ntp_server = "198.18.1.1"
-    preferred  = "false"
+    preferred  = false
     mgmt       = "oob"
     epg        = "default"
   }

@@ -1,15 +1,15 @@
 variable "destination_group" {
-  description = "SNMP Destination Group Configuration"
+  description = "SNMP Destination Group Configuration."
   type = object({
     # snmp_dest_group: Create the SNMP Destination Group: Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group
     snmp_dest_group = string
-    # dest_grp_descr: SNMP Destination Group Description
+    # dest_grp_descr: SNMP Destination Group Description.
     dest_grp_descr = string
   })
 }
 
 variable "snmp_source" {
-  description = "Configuration to Create a SNMP Source"
+  description = "Configuration to Create a SNMP Source."
   type = object({
     # snmp_dest_group: This should have already been created by the "destination_group" configuration.
     snmp_dest_group = string

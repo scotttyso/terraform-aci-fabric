@@ -1,5 +1,5 @@
 variable "snmp_client_grp" {
-  description = "Client Group, Mgmt Domain, and Associated EPG"
+  description = "Client Group, Mgmt Domain, and Associated EPG."
   type = object({
     name = string
     mgmt = string
@@ -8,7 +8,7 @@ variable "snmp_client_grp" {
 }
 
 variable "snmp_client" {
-  description = "Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control)"
+  description = "Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control)."
   type = object({
     client_grp = string
     client     = string

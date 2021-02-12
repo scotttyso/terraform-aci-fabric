@@ -100,18 +100,18 @@ API Information:
 GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name} > Create Syslog Remote Destination
 */
-resource "aci_rest" "syslog_srvrs" {
-  for_each   = var.syslog_srvrs
+resource "aci_rest" "syslog_servers" {
+  for_each   = var.syslog_servers
   depends_on = [aci_rest.syslog_destination_grp]
-  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_group}/rdst-${var.value.syslog_srvr}.json"
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_group}/rdst-${var.value.syslog_server}.json"
   class_name = "syslogRemoteDest"
   payload    = <<EOF
 {
 	"syslogRemoteDest": {
 		"attributes": {
-			"dn": "uni/fabric/slgroup-default/rdst-${var.value.syslog_srvr}",
-			"host": "${var.value.syslog_srvr}",
-			"name": "${var.value.name}",
+			"dn": "uni/fabric/slgroup-default/rdst-${var.value.syslog_server}",
+			"host": "${var.value.syslog_server}",
+			"name": "${var.value.syslog_name}",
 			"forwardingFacility": "${var.value.facility}",
 			"port": "${var.value.syslog_port}",
 			"severity": "${var.value.syslog_severity}",

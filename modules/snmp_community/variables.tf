@@ -3,32 +3,34 @@ terraform {
 }
 
 variable "communities" {
-  description = "Add SNMP Commities to the Fabric default Policy"
+  description = "Add SNMP Commities to the Fabric default Policy."
   type = object({
     # comm_descr: SNMP Community Description
-    comm_descr = optional(string)
+    description = optional(string)
     # community: SNMP Community value
     community = string
   })
-  default = [
-    {
-      community = "walk-this-way"
-    }
-  ]
   validation {
     condition = (
-      length(var.comm_descr) >= 0 &&
-      length(var.comm_descr) <= 128 &&
-      can(regexall("[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]+", var.comm_descr))
+      length(var.communities.description) >= 0 &&
+      length(var.communities.description) <= 128 &&
+      can(regexall("[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]+", var.communities.description))
     )
-    error_message = "The Community Description can only be between 0 ad 128 characters"
+    error_message = "The Description can only be between 0 ad 128 characters."
   }
   validation {
     condition = (
-      length(var.community) >= 1 &&
-      length(var.community) <= 32 &&
-      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.community))
+      length(var.communities.community) >= 1 &&
+      length(var.communities.community) <= 32 &&
+      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.communities.community))
     )
-    error_message = "The Community is a Required Parameter and must be between 1 and 32 characters"
+    error_message = "The Community is a Required Parameter and must be between 1 and 32 characters."
   }
+}
+
+locals {
+  default_communities = {
+    community = "walk-this-way"
+  }
+  merged_communities = merge(local.default_communities, var.communities)
 }

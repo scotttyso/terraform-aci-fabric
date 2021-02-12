@@ -1,5 +1,9 @@
+terraform {
+  experiments = [module_variable_optional_attrs]
+}
+
 variable "snmp_users" {
-  description = "SNMP User Defination"
+  description = "SNMP User Defination."
   type = object({
     snmp_user = string
     priv_type = optional(string)
