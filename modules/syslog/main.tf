@@ -6,25 +6,25 @@ GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Dest Group Name}
 */
 resource "aci_rest" "syslog_destination_grp" {
-  for_each   = var.syslog_dg
-  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}.json"
+  for_each   = var.syslog
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_group}.json"
   class_name = "syslogGroup"
   payload    = <<EOF
 {
 	"syslogGroup": {
 		"attributes": {
-			"dn": "uni/fabric/slgroup-${var.value.dest_grp}",
-			"name": "${var.value.dest_grp}",
-            "format": "${var.value.log_format}",
-			"includeMilliSeconds": "${var.value.msec}",
-			"includeTimeZone": "${var.value.timezone}",
+			"dn": "uni/fabric/slgroup-${var.value.dest_group}",
+			"name": "${var.value.dest_group}",
 			"descr": ""${var.value.description}",
+            "format": "${var.value.log_format}",
+			"includeMilliSeconds": "${var.value.incl_msec}",
+			"includeTimeZone": "${var.value.timezone}"
 		},
 		"children": [
 			{
 				"syslogConsole": {
 					"attributes": {
-						"dn": "uni/fabric/slgroup-${var.value.dest_grp}/console",
+						"dn": "uni/fabric/slgroup-${var.value.dest_group}/console",
                         "adminState": "${var.value.console_state}",
                         "severity": "${var.value.console_sev}",
                         "rn": "console"
@@ -35,7 +35,7 @@ resource "aci_rest" "syslog_destination_grp" {
 			{
 				"syslogFile": {
 					"attributes": {
-						"dn": "uni/fabric/slgroup-${var.value.dest_grp}/file",
+						"dn": "uni/fabric/slgroup-${var.value.dest_group}/file",
                         "adminState": "${var.value.local_state}",
                         "severity": "${var.value.local_sev}",
                         "rn": "file"
@@ -46,7 +46,7 @@ resource "aci_rest" "syslog_destination_grp" {
 			{
 				"syslogProf": {
 					"attributes": {
-						"dn": "uni/fabric/slgroup-${var.value.dest_grp}/prof",
+						"dn": "uni/fabric/slgroup-${var.value.dest_group}/prof",
 						"rn": "prof"
 					},
 					"children": []
@@ -65,23 +65,24 @@ API Information:
 GUI Location:
  - Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source
 */
-resource "aci_rest" "syslog_source" {
-  path       = "/api/node/mo/uni/fabric/moncommon/slsrc-${var.syslog_src}.json"
+resource "aci_rest" "syslog_src" {
+  for_each   = var.syslog
+  path       = "/api/node/mo/uni/fabric/moncommon/slsrc-${var.source_grp}.json"
   class_name = "syslogSrc"
   payload    = <<EOF
 {
 	"syslogSrc": {
 		"attributes": {
-			"dn": "uni/fabric/moncommon/slsrc-${var.syslog_src}",
-			"name": "${var.syslog_src}",
-			"incl": "${var.types}",
+			"dn": "uni/fabric/moncommon/slsrc-${var.source_grp}",
+			"name": "${var.source_grp}",
+			"incl": "${var.incl_types}",
             "minSev": "${var.min_level}",
 		},
 		"children": [
 			{
 				"syslogRsDestGroup": {
 					"attributes": {
-						"tDn": "uni/fabric/slgroup-${var.dest_grp}",
+						"tDn": "uni/fabric/slgroup-${var.dest_group}",
 					},
 					"children": []
 				}
@@ -99,21 +100,21 @@ API Information:
 GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name} > Create Syslog Remote Destination
 */
-resource "aci_rest" "syslog_servers" {
-  for_each   = var.syslog_servers
+resource "aci_rest" "syslog_srvrs" {
+  for_each   = var.syslog_srvrs
   depends_on = [aci_rest.syslog_destination_grp]
-  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}/rdst-${var.value.server}.json"
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_group}/rdst-${var.value.syslog_srvr}.json"
   class_name = "syslogRemoteDest"
   payload    = <<EOF
 {
 	"syslogRemoteDest": {
 		"attributes": {
-			"dn": "uni/fabric/slgroup-default/rdst-${var.value.server}",
-			"host": "${var.value.server}",
+			"dn": "uni/fabric/slgroup-default/rdst-${var.value.syslog_srvr}",
+			"host": "${var.value.syslog_srvr}",
 			"name": "${var.value.name}",
 			"forwardingFacility": "${var.value.facility}",
-			"port": "${var.value.port}",
-			"severity": "${var.value.severity}",
+			"port": "${var.value.syslog_port}",
+			"severity": "${var.value.syslog_severity}",
 		},
 		"children": [
 			{
