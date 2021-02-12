@@ -6,12 +6,14 @@ variable "ntp" {
     mgmt       = string
     epg        = string
   })
-  default = [
-    {
-      ntp_server = "198.18.1.1"
-      preferred  = "false"
-      mgmt       = "oob"
-      epg        = "default"
-    }
-  ]
+}
+
+locals {
+  default_ntp = {
+    ntp_server = "198.18.1.1"
+    preferred  = "false"
+    mgmt       = "oob"
+    epg        = "default"
+  }
+  merged_ntp = merge(local.default_ntp, var.ntp)
 }

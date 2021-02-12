@@ -1,33 +1,18 @@
-variable "SNMP_ClientGrp" {
-  description = "Client Group, Mgmt Domain, and Associated EPG"
-  type = map(object({
-    name = string
-    mgmt = string
-    epg  = string
-  }))
-  default = [
-    {
-      name = "oob_clients"
-      mgmt = "oob"
-      epg  = "default"
-    }
-  ]
+variable "snmp_users" {
+  description = "SNMP User Defination"
+  type = object({
+    snmp_user = string
+    priv_type = optional(string)
+    priv_key  = optional(string)
+    auth_type = optional(string)
+    auth_key  = string
+  })
 }
 
-variable "snmp_client" {
-  description = "Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control)"
-  type = map(object({
-    client_grp = string
-    client     = string
-    mgmt       = string
-    epg        = string
-  }))
-  default = [
-    {
-      client_grp = "oob_clients"
-      client     = "198.18.1.1"
-      mgmt       = "oob"
-      epg        = "default"
-    }
-  ]
+locals {
+  default_snmp_users = {
+    snmp_user = "user1"
+    auth_key  = "cisco123"
+  }
+  merged_snmp_users = merge(local.default_snmp_users, var.snmp_users)
 }

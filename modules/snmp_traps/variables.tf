@@ -49,15 +49,15 @@ variable "snmp_traps" {
 
 locals {
   default_destination_group = {
-      snmp_dest_group = "default"
-      dest_grp_descr  = "SNMP Trap Destination Group - Created by Terraform Startup Script"
-    }
+    snmp_dest_group = "default"
+    dest_grp_descr  = "SNMP Trap Destination Group - Created by Terraform Startup Script"
+  }
   merged_destination_group = merge(local.default_destination_group, var.destination_group)
   default_snmp_source = {
-      snmp_dest_group = "default"
-      snmp_source     = "default"
-      snmp_messages   = "audit,events,faults"
-    }
+    snmp_dest_group = "default"
+    snmp_source     = "default"
+    snmp_messages   = "audit,events,faults"
+  }
   merged_snmp_source = merge(local.default_snmp_source, var.snmp_source)
   default_snmp_traps = {
     snmp_dest_group = "default"

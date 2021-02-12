@@ -4,8 +4,8 @@ variable "bgp_asn" {
   default     = 65001
   validation {
     condition = (
-      length(var.bgp_as) >= 1 &&
-      length(var.bgp_as) <= 4294967295
+      length(var.bgp_asn) >= 1 &&
+      length(var.bgp_asn) <= 4294967295
     )
     error_message = "The BGP ASN must be between 1 and 4294967295"
   }

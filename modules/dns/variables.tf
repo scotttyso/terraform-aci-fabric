@@ -4,12 +4,6 @@ variable "dns_domain" {
     domain = string
     fqdn   = string
   }))
-  default = [
-    {
-      domain = "example.com"
-      fqdn   = "no"
-    }
-  ]
 }
 
 variable "dns_mgmt" {
@@ -30,10 +24,17 @@ variable "dns_server" {
     server    = string
     preferred = bool
   })
-  default = [
-    {
-      server    = "198.18.1.1"
-      preferred = false
-    }
-  ]
+}
+
+locals {
+  default_dns_domain = {
+    domain = "example.com"
+    fqdn   = "no"
+  }
+  merged_dns_domain = merge(local.default_dns_domain, var.dns_domain)
+  default_dns_server = {
+    server    = "198.18.1.1"
+    preferred = false
+  }
+  merged_dns_server = merge(local.default_dns_server, var.dns_server)
 }

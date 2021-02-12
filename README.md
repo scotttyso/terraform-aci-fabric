@@ -21,12 +21,20 @@ This platform is currently in Early Access and comes with no support.  Please co
 
 | Name | Version |
 |------|---------|
-| terraform | >=0.14.5 |
-| ACI | >=0.5.4 |
+| terraform | > 0.14 |
+| aci | >= 0.5.2 |
 
 ## Providers
 
 No provider.
+
+## Modules
+
+No Modules.
+
+## Resources
+
+No resources.
 
 ## Inputs
 
@@ -35,5 +43,4 @@ No input.
 ## Outputs
 
 No output.
-
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

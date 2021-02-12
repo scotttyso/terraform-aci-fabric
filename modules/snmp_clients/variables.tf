@@ -5,13 +5,6 @@ variable "snmp_client_grp" {
     mgmt = string
     epg  = string
   })
-  default = [
-    {
-      name = "oob_clients"
-      mgmt = "oob"
-      epg  = "default"
-    }
-  ]
 }
 
 variable "snmp_client" {
@@ -22,12 +15,20 @@ variable "snmp_client" {
     mgmt       = string
     epg        = string
   })
-  default = [
-    {
-      client_grp = "oob_clients"
-      client     = "198.18.1.1"
-      mgmt       = "oob"
-      epg        = "default"
-    }
-  ]
+}
+
+locals {
+  default_snmp_client_grp = {
+    name = "oob_clients"
+    mgmt = "oob"
+    epg  = "default"
+  }
+  merged_snmp_client_grp = merge(local.default_snmp_client_grp, var.snmp_client_grp)
+  default_snmp_client = {
+    client_grp = "oob_clients"
+    client     = "198.18.1.1"
+    mgmt       = "oob"
+    epg        = "default"
+  }
+  merged_snmp_client = merge(local.default_snmp_client, var.snmp_client)
 }
