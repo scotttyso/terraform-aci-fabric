@@ -6,10 +6,10 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Domains
 */
 resource "aci_rest" "dns_domain" {
-	for_each 	= var.dns_domain
-	path		= "/api/node/mo/uni/fabric/dnsp-default/dom-[${var.value.domain}].json"
-	class_name	= "dnsDomain"
-	payload		= <<EOF
+  for_each   = var.dns_domain
+  path       = "/api/node/mo/uni/fabric/dnsp-default/dom-[${var.value.domain}].json"
+  class_name = "dnsDomain"
+  payload    = <<EOF
 {
     "dnsDomain": {
         "attributes": {
@@ -31,9 +31,9 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
 */
 resource "aci_rest" "DNS_Mgmt_Domain" {
-	path		= "/api/node/mo/uni/fabric/dnsp-default.json"
-	class_name	= "dnsRsProfileToEpg"
-	payload		= <<EOF
+  path       = "/api/node/mo/uni/fabric/dnsp-default.json"
+  class_name = "dnsRsProfileToEpg"
+  payload    = <<EOF
 {
     "dnsRsProfileToEpg": {
         "attributes": {
@@ -53,10 +53,10 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Providers
 */
 resource "aci_rest" "dns_server" {
-	for_each 	= var.dns_server
-	path		= "/api/node/mo/uni/fabric/dnsp-default/prov-[${var.value.server}].json"
-	class_name	= "dnsProv"
-	payload		= <<EOF
+  for_each   = var.dns_server
+  path       = "/api/node/mo/uni/fabric/dnsp-default/prov-[${var.value.server}].json"
+  class_name = "dnsProv"
+  payload    = <<EOF
 {
     "dnsProv": {
         "attributes": {

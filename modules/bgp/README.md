@@ -1,37 +1,37 @@
-# snmp_clients - SNMP Clients Terraform Module - aci_rest
+# bgp - BGP Configuration Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_clients" {
+module "bgp" {
 
-  source = "terraform-aci-fabric/modules/snmp_clients"
+  source = "terraform-aci-fabric//modules/bgp"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Policy.
+This module will Configure the BGP ASN and add the Route Reflectors for the ACI Fabric.
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [BGP ASN](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [BGP Route Reflectors](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
 
-SNMP Client Group:
-*-* Class: "snmpClientGrpP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
+BGP Autonomous System Number:
+*-* Class: "bgpAsP"
+*-* Distinguished Name: "uni/fabric/bgpInstP-default"
 
-SNMP Clients:
-*-* Class: "snmpClientP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+BGP Route Reflectors:
+*-* Class: "bgpRRNodePEp"
+*-* Distinguished Name: "uni/fabric/bgpInstP-default/rr/node-{Node ID}"
 
 GUI Location:
 
-SNMP Client Group:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
+BGP Autonomous System Number:
+*-* System > System Settings > BGP Route Reflector: Autonomous System Number
 
-SNMP Clients:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+BGP Route Reflectors:
+*-* System > System Settings > BGP Route Reflector: Route Reflector Nodes

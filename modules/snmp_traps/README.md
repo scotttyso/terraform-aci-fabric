@@ -1,11 +1,11 @@
-# aci_rest - ACI Rest Terraform Module
+# snmp_traps - SNMP Community Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "Fabric_Defaults" {
+module "snmp_traps" {
 
-  source = "terraform-aci/modules/Fabric_Defaults"
+  source = "terraform-aci/modules//snmp_traps"
 
   # omitted...
 }
@@ -15,41 +15,39 @@ This module will deploy the recommended Fabric characteristics for the Fabric Po
 
 These resources are created
 
-* [SNMP Client Group - Inband](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Client Group - Out-of-Band](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Client Pool](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Client Pool](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [SNMP Destination Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [SNMP Source](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [SNMP Trap Destination](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-## Requirements
+API Information:
 
-| Name | Version |
-|------|---------|
-| terraform | >= 0.14.5 |
-| intersight | =1.0.0 |
+SNMP Destination Group:
+*-* Class: "snmpGroup"
+*-* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Trap Destination Group}"
 
-## Providers
+SNMP Source:
+*-* Class: "snmpSrc"
+*-* Distinguished Name: "uni/fabric/moncommon/snmpsrc-{Source Name}"
 
-| Name | Version |
-|------|---------|
-| intersight | =1.0.0 |
+SNMP Trap Forward Destination:
+*-* Class: "snmpTrapFwdServerP"
+*-* Distinguished Name: "uni/fabric/snmppol-default/trapfwdserver-[{Trap Server}]"
 
-## Inputs
+SNMP Trap Destination:
+*-* Class: "snmpTrapDest"
+*-* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Destination Group}/trapdest-{SNMP Trap Server}-port-{SNMP Port}"
 
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| gateway | Default gateway for this pool. | `string` | n/a | yes |
-| name | Name of the IP Pool to be created. | `string` | n/a | yes |
-| netmask | Subnet Mask for this pool. | `string` | n/a | yes |
-| org\_name | Intersight Organization name | `string` | n/a | yes |
-| pool\_size | Number of IPs you want this pool to contain. | `string` | n/a | yes |
-| primary\_dns | Primary DNS Server for this pool. | `string` | n/a | yes |
-| secondary\_dns | Secondary DNS Server for this pool. | `string` | n/a | yes |
-| starting\_address | Starting IP Address you want for this pool. | `string` | n/a | yes |
-| tags | n/a | `list(map(string))` | `[]` | no |
+GUI Location:
 
-## Outputs
+SNMP Destination Group:
+*-* Admin > External Data Collectors > Monitoring Destinations > SNMP > {SNMP Trap Destination Group}
 
-No output.
+SNMP Source:
+*-* Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP
+*-* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group
 
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+SNMP Trap Forward Destination:
+*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default: Trap Forward Servers
+
+SNMP Trap Destination:
+*-* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers

@@ -1,37 +1,43 @@
-# snmp_clients - SNMP Clients Terraform Module - aci_rest
+# dns - Add DNS Servers for APIC/switch domain resolution Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_clients" {
+module "dns" {
 
-  source = "terraform-aci-fabric/modules/snmp_clients"
+  source = "terraform-aci-fabric//modules/dns"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Policy.
+This module will Add DNS Servers for Fabric FQDN resolution.
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [dns](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
 
-SNMP Client Group:
-*-* Class: "snmpClientGrpP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
+FQDN and Search Domains:
+*-* Class: "dnsDomain"
+*-* Distinguished Name: "uni/fabric/dnsp-default/dom-[{Domain}]"
 
-SNMP Clients:
-*-* Class: "snmpClientP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+DNS Management Domain:
+*-* Class: "dnsRsProfileToEpg"
+*-* Distinguished Name: "uni/tn-mgmt/mgmtp-default/{Mgmt_Domain}-{EPG}"
+
+DNS Server:
+*-* Class: "dnsProv"
+*-* Distinguished Name: "uni/fabric/dnsp-default/prov-[{DNS_Server}]"
 
 GUI Location:
 
-SNMP Client Group:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
+FQDN and Search Domains:
+*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Domains
 
-SNMP Clients:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+DNS Management Domain:
+*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
+
+DNS Server:
+*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Providers

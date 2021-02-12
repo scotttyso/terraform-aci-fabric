@@ -1,37 +1,27 @@
-# snmp_clients - SNMP Clients Terraform Module - aci_rest
+# ntp - Terraform Module to create NTP Servers - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_clients" {
+module "ntp" {
 
-  source = "terraform-aci-fabric/modules/snmp_clients"
+  source = "terraform-aci-fabric//modules/ntp"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Policy.
+This module will Add NTP Servers to the default Date and Time Policy.
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [ntp](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
 
-SNMP Client Group:
-*-* Class: "snmpClientGrpP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
-
-SNMP Clients:
-*-* Class: "snmpClientP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+*-* Class: "datetimeNtpProv"
+*-* Distinguished Name: "uni/fabric/time-default/ntpprov-{NTP_Server}"
 
 GUI Location:
 
-SNMP Client Group:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
-
-SNMP Clients:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+*-* Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers

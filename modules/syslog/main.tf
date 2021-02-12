@@ -6,10 +6,10 @@ GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Dest Group Name}
 */
 resource "aci_rest" "syslog_destination_grp" {
-    for_each    = var.syslog_dg
-	path		= "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}.json"
-	class_name	= "syslogGroup"
-	payload		= <<EOF
+  for_each   = var.syslog_dg
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}.json"
+  class_name = "syslogGroup"
+  payload    = <<EOF
 {
 	"syslogGroup": {
 		"attributes": {
@@ -66,9 +66,9 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source
 */
 resource "aci_rest" "syslog_source" {
-	path		= "/api/node/mo/uni/fabric/moncommon/slsrc-${var.syslog_src}.json"
-	class_name	= "syslogSrc"
-	payload		= <<EOF
+  path       = "/api/node/mo/uni/fabric/moncommon/slsrc-${var.syslog_src}.json"
+  class_name = "syslogSrc"
+  payload    = <<EOF
 {
 	"syslogSrc": {
 		"attributes": {
@@ -100,11 +100,11 @@ GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name} > Create Syslog Remote Destination
 */
 resource "aci_rest" "syslog_servers" {
-    for_each    = var.syslog_servers
-	depends_on	= [aci_rest.syslog_destination_grp]
-	path		= "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}/rdst-${var.value.server}.json"
-	class_name	= "syslogRemoteDest"
-	payload		= <<EOF
+  for_each   = var.syslog_servers
+  depends_on = [aci_rest.syslog_destination_grp]
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.value.dest_grp}/rdst-${var.value.server}.json"
+  class_name = "syslogRemoteDest"
+  payload    = <<EOF
 {
 	"syslogRemoteDest": {
 		"attributes": {

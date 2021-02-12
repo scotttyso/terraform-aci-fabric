@@ -5,11 +5,11 @@ API Information:
 GUI Location:
  - Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
 */
-resource "aci_rest" "SNMP_Client_Group" {
-	for_each   	= var.SNMP_ClientGrp
-	path       	= "/api/node/mo/uni/fabric/snmppol-default/clgrp-${each.value.name}.json"
-	class_name 	= "snmpClientGrpP"
-	payload    	= <<EOF
+resource "aci_rest" "snmp_client_group" {
+  for_each   = var.snmp_client_grp
+  path       = "/api/node/mo/uni/fabric/snmppol-default/clgrp-${each.value.name}.json"
+  class_name = "snmpClientGrpP"
+  payload    = <<EOF
 {
 	"snmpClientGrpP": {
 		"attributes": {
@@ -42,11 +42,11 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
 */
 resource "aci_rest" "snmp_client" {
-	depends_on  = [aci_rest.SNMP_Client_Group]
-	for_each   	= var.snmp_client
-	path		= "/api/node/mo/uni/fabric/snmppol-default/clgrp-${each.value.client_grp}_Clients/client-[${each.value.client}].json"
-	class_name	= "snmpClientP"
-	payload		= <<EOF
+  depends_on = [aci_rest.SNMP_Client_Group]
+  for_each   = var.snmp_client
+  path       = "/api/node/mo/uni/fabric/snmppol-default/clgrp-${each.value.client_grp}_Clients/client-[${each.value.client}].json"
+  class_name = "snmpClientP"
+  payload    = <<EOF
 {
     "snmpClientP": {
         "attributes": {

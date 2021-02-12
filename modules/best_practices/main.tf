@@ -1,43 +1,7 @@
 /*
-- This Resource File will create Recommended Default Policies Based on the Best Practice Wizard
-*/
+Assign Best Practice Values for the Fabric Settings
 
-/*
-Assign the oob as the default Management Interface for the APICs
 API Information:
- - Class: "mgmtConnectivityPrefs"
- - Distinguished Named "uni/fabric/connectivityPrefs"
-GUI Location:
- - System > System Settings > APIC Connectivity Preferences
-*/
-resource "aci_rest" "connectivity_preference" {
-	path       = "/api/node/mo/uni/fabric/connectivityPrefs.json"
-	class_name = "mgmtConnectivityPrefs"
-	payload    = <<EOF
-{
-	"mgmtConnectivityPrefs": {
-		"attributes": {
-			"dn": "uni/fabric/connectivityPrefs",
-			"interfacePref": "${var.mgmt_preference}"
-		},
-		"children": []
-	}
-}
-	EOF
-}
-
-/*
-Assign Best Practice Values for the Following Settings
- - Enable Strict COOP Group Policy
-   System > System Settings > COOP Group
- - Telemetry & Enable DOM
-   Fabric > Policies > Monitoring > Fabric Node Controls > default
- - ISIS Metric for redistributed Routes - 63
-   System > System Settings > ISIS Policy
- - Enable BFD for Fabric-Facing Interfaces 
-   Fabric > Fabric Policies > Policies > L3 Interface > default > BFD ISIS Policy
-API Information:
- - Class: "fabricInst"
  - Class: "coopPol"
  - Class: "fabricNodeControl"
  - Class: "isisDomPol"
@@ -48,12 +12,21 @@ API Information:
  - Distinguished Name: "uni/fabric/isisDomP-default"
  - Distinguished Name: "uni/fabric/l3IfP-default"
 GUI Location:
+Assign the Preferred Mgmt Domain for Routing on the APICs
  - System > System Settings > APIC Connectivity Preferences
+Enable Strict COOP Group Policy
+ - System > System Settings > COOP Group
+Telemetry & Enable DOM
+   Fabric > Policies > Monitoring > Fabric Node Controls > default
+ISIS Metric for redistributed Routes - 63
+   System > System Settings > ISIS Policy
+Enable BFD for Fabric-Facing Interfaces 
+   Fabric > Fabric Policies > Policies > L3 Interface > default > BFD ISIS Policy
 */
 resource "aci_rest" "fabric_best_practice" {
-	path       = "/api/node/mo/uni/fabric.json"
-	class_name = "fabricInst"
-	payload    = <<EOF
+  path       = "/api/node/mo/uni/fabric.json"
+  class_name = "fabricInst"
+  payload    = <<EOF
 {
     "fabricInst": {
         "attributes": {
@@ -61,11 +34,19 @@ resource "aci_rest" "fabric_best_practice" {
         },
         "children": [
 			{
+				"mgmtConnectivityPrefs": {
+					"attributes": {
+						"dn": "uni/fabric/connectivityPrefs",
+						"interfacePref": "${var.fabric_mgmt_preference}"
+					},
+					"children": []
+				}
+			},
+			{
 				"coopPol": {
 					"attributes": {
 						"dn": "uni/fabric/pol-default",
-						"rn": "pol-default",
-						"type": "${var.coop_policy}"
+						"type": "${var.fabric_coop_policy}"
 					},
 					"children": []
 				}
@@ -74,8 +55,9 @@ resource "aci_rest" "fabric_best_practice" {
 				"fabricNodeControl": {
 					"attributes": {
 						"dn": "uni/fabric/nodecontrol-default",
-						"control": "${var.dom}",
-						"descr": "${var.dom_descr}"
+						"control": "${var.fabric_node_dom}",
+						"descr": "${var.fabric_dom_descr}",
+						"featureSet": "${var.fabric_node_feature}"
 					},
 					"children": []
 				}
@@ -84,8 +66,7 @@ resource "aci_rest" "fabric_best_practice" {
                 "isisDomPol": {
                     "attributes": {
                         "dn": "uni/fabric/isisDomP-default",
-                        "rn": "isisDomP-default",
-                        "redistribMetric": "${var.isis_metric}"
+                        "redistribMetric": "${var.fabric_isis_metric}"
 					},
 					"children": []
 				}
@@ -95,7 +76,7 @@ resource "aci_rest" "fabric_best_practice" {
 					"attributes": {
 						"dn": "uni/fabric/l3IfP-default",
 						"bfdIsis": "${var.fabric_bfd}",
-						"descr": "Fabric BFD Policy"
+						"descr": "${var.fabric_bfd_descr}"
 					},
 					"children": []
 				}
@@ -107,9 +88,8 @@ resource "aci_rest" "fabric_best_practice" {
 }
 
 /*
-Assign Best Practice Values for the Following Settings
+Assign Best Practice Values for the Infrastructure Settings
 API Information:
- - Class: "infraInfra"
  - Class: "infraSetPol"
  - Class: "epLoopProtectP"
  - Class: "epControlP"
@@ -117,7 +97,6 @@ API Information:
  - Class: "infraPortTrackPol"
  - Class: "mcpInstPol"
  - Class: "qosInstPol"
- - Distinguished Name: "uni/infra"
  - Distinguished Name: "uni/infra/settings"
  - Distinguished Name: "uni/infra/epLoopProtectP-default"
  - Distinguished Name: "uni/infra/epCtrlP-default"
@@ -126,29 +105,31 @@ API Information:
  - Distinguished Name: "uni/infra/mcpInstP-default"
  - Distinguished Name: "uni/infra/qosinst-default"
 GUI Location:
+Fabric Wide Settings
  - System > System Settings > Fabric Wide Settings
    Disable Remote EP Learning
    Enforce Subnet Check
    Turn on Domain Validation
- - Endpoint Controls
-   System > System Settings > Endpoint Controls
-   - Endpoint Loop Protection - Enabled
-   - Rouge Endpoint Control - Enabled
-	 Interval 30 seconds
-	 Multiplier 6
-   - IP Aging - Enabled
- - Infrastructure Port Tracking - Enabled
-   System > System Settings > Port Tracking
- - Mis-Cabling Protocol per-vlan Tracking 
-   Fabric > Access Policies > Global Policies > MCP Instance Policy default.
- - Preserve COS through the ACI Fabric
-   Fabric > Access Policies > Policies > Global > QOS Class > Preserve COS
+Endpoint Controls
+ - System > System Settings > Endpoint Controls
+   Endpoint Loop Protection - Enabled - recommended
+   Rouge Endpoint Control - Enabled - recommended
+	- Interval 30 seconds - recommended
+	- Multiplier 6 - recommended
+	- action - no actions is the default recommendation
+   IP Aging - Enabled
+Infrastructure Port Tracking - Enabled
+ - System > System Settings > Port Tracking
+Mis-Cabling Protocol per-vlan Tracking 
+ - Fabric > Access Policies > Global Policies > MCP Instance Policy default.
+Preserve COS through the ACI Fabric
+ - Fabric > Access Policies > Policies > Global > QOS Class > Preserve COS
 
 */
 resource "aci_rest" "infra_best_practice" {
-	path       = "/api/node/mo/uni/infra.json"
-	class_name = "infraInfra"
-	payload    = <<EOF
+  path       = "/api/node/mo/uni/infra.json"
+  class_name = "infraInfra"
+  payload    = <<EOF
 {
 	"infraInfra": {
 		"attributes": {
@@ -159,9 +140,9 @@ resource "aci_rest" "infra_best_practice" {
 				"infraSetPol": {
 					"attributes": {
 						"dn": "uni/infra/settings",
-						"domainValidation": "true",
-						"enforceSubnetCheck": "true",
-						"unicastXrEpLearnDisable": "true"
+						"domainValidation": "${var.domain_validation}",
+						"enforceSubnetCheck": "${var.subnet_check}",
+						"unicastXrEpLearnDisable": "${var.disable_remote_ep_learn}"
 					},
 					"children": []
 				}
@@ -170,9 +151,8 @@ resource "aci_rest" "infra_best_practice" {
 				"epLoopProtectP": {
 					"attributes": {
 						"dn": "uni/infra/epLoopProtectP-default",
-						"adminSt": "enabled",
-						"action": "",
-						"rn": "epLoopProtectP-default"
+						"adminSt": "${var.ep_loop_state}",
+						"action": "${var.ep_loop_action}",
 					},
 					"children": []
 				}
@@ -181,10 +161,9 @@ resource "aci_rest" "infra_best_practice" {
 				"epControlP": {
 					"attributes": {
 						"dn": "uni/infra/epCtrlP-default",
-						"adminSt": "enabled",
-						"rogueEpDetectIntvl": "30",
-						"rogueEpDetectMult": "6",
-						"rn": "epCtrlP-default"
+						"adminSt": "${var.rouge_state}",
+						"rogueEpDetectIntvl": "${var.rouge_interval}",
+						"rogueEpDetectMult": "${var.rouge_multiplier}",
 					},
 					"children": []
 				}
@@ -193,8 +172,7 @@ resource "aci_rest" "infra_best_practice" {
 				"epIpAgingP": {
 					"attributes": {
 						"dn": "uni/infra/ipAgingP-default",
-						"rn": "ipAgingP-default",
-						"adminSt": "enabled"
+						"adminSt": "${var.ip_aging_state}"
 					},
 					"children": []
 				}
@@ -203,7 +181,7 @@ resource "aci_rest" "infra_best_practice" {
 				"infraPortTrackPol": {
 					"attributes": {
 						"dn": "uni/infra/trackEqptFabP-default",
-						"adminSt": "on"
+						"adminSt": "${var.port_tracking}"
 					},
 					"children": []
 				}
@@ -212,10 +190,10 @@ resource "aci_rest" "infra_best_practice" {
 				"mcpInstPol": {
 					"attributes": {
 						"dn": "uni/infra/mcpInstP-default",
-						"descr": "Configured using Terraform ACI Provider Deployment Script",
-						"ctrl": "pdu-per-vlan",
-						"adminSt": "enabled",
-						"key": "cisco"
+						"descr": "${var.mcp_description}",
+						"ctrl": "${var.mcp_control}",
+						"adminSt": "${var.mcp_state}",
+						"key": "${var.mcp_key}"
 					},
 					"children": []
 				}
@@ -224,7 +202,7 @@ resource "aci_rest" "infra_best_practice" {
 				"qosInstPol": {
 					"attributes": {
 						"dn": "uni/infra/qosinst-default",
-						"ctrl": "dot1p-preserve"
+						"ctrl": "${var.preserve_cos}"
 					},
 					"children": []
 				}

@@ -1,37 +1,25 @@
-# snmp_clients - SNMP Clients Terraform Module - aci_rest
+# snmp_community - SNMP Community Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_clients" {
+module "snmp_community" {
 
-  source = "terraform-aci-fabric/modules/snmp_clients"
+  source = "terraform-aci-fabric/modules//snmp_community"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Policy.
+This module will Add SNMP Communities to the default SNMP Policy.
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [SNMP Communities](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
-
-SNMP Client Group:
-*-* Class: "snmpClientGrpP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
-
-SNMP Clients:
-*-* Class: "snmpClientP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+*-* Class: "snmpCommunityP"
+*-* Distinguished Name: "uni/fabric/snmppol-default/community-{SNMP Community}"
 
 GUI Location:
-
-SNMP Client Group:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
-
-SNMP Clients:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Community Policies

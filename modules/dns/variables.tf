@@ -1,33 +1,39 @@
-variable "SNMP_ClientGrp" {
-	description = "Client Group, Mgmt Domain, and Associated EPG"
-	type	= map(object({
-		name	= string
-		mgmt	= string
-		epg		= string
-	}))
-	default = [
-	  {
-		name	= "oob_clients"
-		mgmt	= "oob"
-		epg		= "default"
-	  }
-	]
+variable "dns_domain" {
+  description = "Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the FQDN.  Assign no to the rest."
+  type = map(object({
+    domain = string
+    fqdn   = string
+  }))
+  default = [
+    {
+      domain = "example.com"
+      fqdn   = "no"
+    }
+  ]
 }
 
-variable "snmp_client" {
-	description = "Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control)"
-	type 	= map(object({
-		client_grp	= string
-		client		= string
-		mgmt		= string
-		epg			= string
-	}))
-	default = [
-	  {
-		client_grp	= "oob_clients"
-		client		= "198.18.1.1"
-		mgmt		= "oob"
-		epg			= "default"
-	  }
-	]
+variable "dns_mgmt" {
+  description = "(inb|oob).  Should the Inband or Out-of-Band be used for DNS Requests"
+  type        = string
+  default     = "oob"
+}
+
+variable "dns_epg" {
+  description = "What EPG in the Mgmt Domain should be used"
+  type        = string
+  default     = "default"
+}
+
+variable "dns_server" {
+  description = "Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred (true|false)"
+  type = object({
+    server    = string
+    preferred = bool
+  })
+  default = [
+    {
+      server    = "198.18.1.1"
+      preferred = false
+    }
+  ]
 }
