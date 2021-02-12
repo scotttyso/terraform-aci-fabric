@@ -5,7 +5,7 @@
 ```hcl
 module "snmp_clients" {
 
-  source = "terraform-aci-fabric/modules/snmp_clients"
+  source = "terraform-aci-fabric//modules/snmp_clients"
 
   # omitted...
 }

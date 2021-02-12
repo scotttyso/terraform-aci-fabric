@@ -5,7 +5,7 @@
 ```hcl
 module "pod_policy" {
 
-  source = "terraform-aci-fabric/modules/pod_policy"
+  source = "terraform-aci-fabric//modules/pod_policy"
 
   # omitted...
 }
