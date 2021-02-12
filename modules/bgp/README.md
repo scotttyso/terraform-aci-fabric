@@ -21,20 +21,24 @@ These resources are created:
 API Information:
 
 BGP Autonomous System Number:
-*-* Class: "bgpAsP"
-*-* Distinguished Name: "uni/fabric/bgpInstP-default"
+
+* Class: "bgpAsP"
+* Distinguished Name: "uni/fabric/bgpInstP-default"
 
 BGP Route Reflectors:
-*-* Class: "bgpRRNodePEp"
-*-* Distinguished Name: "uni/fabric/bgpInstP-default/rr/node-{Node ID}"
+
+* Class: "bgpRRNodePEp"
+* Distinguished Name: "uni/fabric/bgpInstP-default/rr/node-{Node ID}"
 
 GUI Location:
 
 BGP Autonomous System Number:
-*-* System > System Settings > BGP Route Reflector: Autonomous System Number
+
+* System > System Settings > BGP Route Reflector: Autonomous System Number
 
 BGP Route Reflectors:
-*-* System > System Settings > BGP Route Reflector: Route Reflector Nodes
+
+* System > System Settings > BGP Route Reflector: Route Reflector Nodes
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

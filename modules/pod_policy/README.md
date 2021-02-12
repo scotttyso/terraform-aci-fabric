@@ -19,12 +19,12 @@ These resources are created
 
 API Information:
 
-*-* Class: "fabricPodPGrp"
-*-* Distinguished Name: "uni/fabric/funcprof/podpgrp-{Name}"
+* Class: "fabricPodPGrp"
+* Distinguished Name: "uni/fabric/funcprof/podpgrp-{Name}"
 
 GUI Location:
 
-*-* Fabric > Fabric Policies > Pods > Policy Groups: {Name}
+* Fabric > Fabric Policies > Pods > Policy Groups: {Name}
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

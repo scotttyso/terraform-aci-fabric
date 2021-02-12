@@ -21,20 +21,24 @@ These resources are created:
 API Information:
 
 SNMP Client Group:
-*-* Class: "snmpClientGrpP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
+
+* Class: "snmpClientGrpP"
+* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
 
 SNMP Clients:
-*-* Class: "snmpClientP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+
+* Class: "snmpClientP"
+* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
 
 GUI Location:
 
 SNMP Client Group:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
+
+* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
 
 SNMP Clients:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+
+* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

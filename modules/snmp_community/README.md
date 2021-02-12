@@ -18,11 +18,13 @@ These resources are created:
 * [SNMP Communities](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
-*-* Class: "snmpCommunityP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/community-{SNMP Community}"
+
+* Class: "snmpCommunityP"
+* Distinguished Name: "uni/fabric/snmppol-default/community-{SNMP Community}"
 
 GUI Location:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Community Policies
+
+* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Community Policies
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

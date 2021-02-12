@@ -19,12 +19,12 @@ These resources are created:
 
 API Information:
 
-*-* Class: "datetimeNtpProv"
-*-* Distinguished Name: "uni/fabric/time-default/ntpprov-{NTP_Server}"
+* Class: "datetimeNtpProv"
+* Distinguished Name: "uni/fabric/time-default/ntpprov-{NTP_Server}"
 
 GUI Location:
 
-*-* Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers
+* Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

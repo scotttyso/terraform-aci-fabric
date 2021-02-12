@@ -20,27 +20,33 @@ These resources are created:
 API Information:
 
 FQDN and Search Domains:
-*-* Class: "dnsDomain"
-*-* Distinguished Name: "uni/fabric/dnsp-default/dom-[{Domain}]"
+
+* Class: "dnsDomain"
+* Distinguished Name: "uni/fabric/dnsp-default/dom-[{Domain}]"
 
 DNS Management Domain:
-*-* Class: "dnsRsProfileToEpg"
-*-* Distinguished Name: "uni/tn-mgmt/mgmtp-default/{Mgmt_Domain}-{EPG}"
+
+* Class: "dnsRsProfileToEpg"
+* Distinguished Name: "uni/tn-mgmt/mgmtp-default/{Mgmt_Domain}-{EPG}"
 
 DNS Server:
-*-* Class: "dnsProv"
-*-* Distinguished Name: "uni/fabric/dnsp-default/prov-[{DNS_Server}]"
+
+* Class: "dnsProv"
+* Distinguished Name: "uni/fabric/dnsp-default/prov-[{DNS_Server}]"
 
 GUI Location:
 
 FQDN and Search Domains:
-*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Domains
+
+* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Domains
 
 DNS Management Domain:
-*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
+
+* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
 
 DNS Server:
-*-* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Providers
+
+* Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Providers
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

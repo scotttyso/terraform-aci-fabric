@@ -22,35 +22,43 @@ These resources are created
 API Information:
 
 SNMP Destination Group:
-*-* Class: "snmpGroup"
-*-* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Trap Destination Group}"
+
+* Class: "snmpGroup"
+* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Trap Destination Group}"
 
 SNMP Source:
-*-* Class: "snmpSrc"
-*-* Distinguished Name: "uni/fabric/moncommon/snmpsrc-{Source Name}"
+
+* Class: "snmpSrc"
+* Distinguished Name: "uni/fabric/moncommon/snmpsrc-{Source Name}"
 
 SNMP Trap Forward Destination:
-*-* Class: "snmpTrapFwdServerP"
-*-* Distinguished Name: "uni/fabric/snmppol-default/trapfwdserver-[{Trap Server}]"
+
+* Class: "snmpTrapFwdServerP"
+* Distinguished Name: "uni/fabric/snmppol-default/trapfwdserver-[{Trap Server}]"
 
 SNMP Trap Destination:
-*-* Class: "snmpTrapDest"
-*-* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Destination Group}/trapdest-{SNMP Trap Server}-port-{SNMP Port}"
+
+* Class: "snmpTrapDest"
+* Distinguished Name: "uni/fabric/snmpgroup-{SNMP Destination Group}/trapdest-{SNMP Trap Server}-port-{SNMP Port}"
 
 GUI Location:
 
 SNMP Destination Group:
-*-* Admin > External Data Collectors > Monitoring Destinations > SNMP > {SNMP Trap Destination Group}
+
+* Admin > External Data Collectors > Monitoring Destinations > SNMP > {SNMP Trap Destination Group}
 
 SNMP Source:
-*-* Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP
-*-* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group
+
+* Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP
+* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group
 
 SNMP Trap Forward Destination:
-*-* Fabric > Fabric Policies > Policies > Pod > SNMP > default: Trap Forward Servers
+
+* Fabric > Fabric Policies > Policies > Pod > SNMP > default: Trap Forward Servers
 
 SNMP Trap Destination:
-*-* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers
+
+* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
