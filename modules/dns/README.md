@@ -76,12 +76,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dns\_domain | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_domain\_default'. | `any` | n/a | yes |
+| dns\_domain | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_domain\_default'. | `string` | `""` | no |
 | dns\_domain\_default | Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the FQDN.  Assign no to the rest. | <pre>object({<br>    domain = string<br>    fqdn   = string<br>  })</pre> | <pre>{<br>  "domain": "example.com",<br>  "fqdn": "no"<br>}</pre> | no |
 | dns\_epg | What EPG in the Management Domain should be used to reach the DNS Server(s). | `string` | `"default"` | no |
 | dns\_mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach the DNS Server(s). | `string` | `"oob"` | no |
-| dns\_server | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_server\_default'. | `any` | n/a | yes |
-| dns\_server\_default | Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'. | <pre>object({<br>    server    = string<br>    preferred = bool<br>  })</pre> | <pre>{<br>  "preferred": false,<br>  "server": "198.18.1.1"<br>}</pre> | no |
+| dns\_server | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_server\_default'. | `string` | `""` | no |
+| dns\_server\_default | Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'. | <pre>object({<br>    preferred = bool<br>    server    = string<br>  })</pre> | <pre>{<br>  "preferred": false,<br>  "server": "198.18.1.1"<br>}</pre> | no |
 
 ## Outputs
 

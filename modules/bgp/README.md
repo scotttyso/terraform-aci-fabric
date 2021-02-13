@@ -69,7 +69,8 @@ No Modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | bgp\_asn | Assign the BGP Autonomous System Number to the System. | `number` | `65001` | no |
-| bgp\_rr | Assign the Spines in the Fabric that should be configured as BGP Route Reflectors.  Typically this should be all spines. | <pre>object({<br>    node_id = number<br>  })</pre> | <pre>{<br>  "node_id": 101<br>}</pre> | no |
+| bgp\_rr | Top Level bgp\_rr variable to work around default variable merger... The real Variable holder is 'bgp\_rr\_default'. | `string` | `""` | no |
+| bgp\_rr\_default | Assign the Spines in the Fabric that should be configured as BGP Route Reflectors.  Typically this should be all spines. | <pre>object({<br>    node_id = number<br>  })</pre> | <pre>{<br>  "node_id": 101<br>}</pre> | no |
 
 ## Outputs
 

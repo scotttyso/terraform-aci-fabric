@@ -1,16 +1,16 @@
 variable "ntp_default" {
   description = "Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true)."
   type = object({
+    epg        = string
+    mgmt       = string
     ntp_server = string
     preferred  = bool
-    mgmt       = string
-    epg        = string
   })
   default = {
+    epg        = "default"
+    mgmt       = "oob"
     ntp_server = "198.18.1.1"
     preferred  = false
-    mgmt       = "oob"
-    epg        = "default"
   }
   validation {
     condition = (
@@ -24,6 +24,7 @@ variable "ntp_default" {
 
 variable "ntp" {
   description = "Top Level ntp variable to work around default variable merger... The real Variable holder is 'ntp_default'."
+  default     = ""
 }
 
 locals {

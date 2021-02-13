@@ -19,6 +19,7 @@ variable "dns_domain_default" {
 
 variable "dns_domain" {
   description = "Top Level dns_domain variable to work around default variable merger... The real Variable holder is 'dns_domain_default'."
+  default     = ""
 }
 
 variable "dns_mgmt" {
@@ -40,12 +41,12 @@ variable "dns_epg" {
 variable "dns_server_default" {
   description = "Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'."
   type = object({
-    server    = string
     preferred = bool
+    server    = string
   })
   default = {
-    server    = "198.18.1.1"
     preferred = false
+    server    = "198.18.1.1"
   }
   validation {
     condition = (
@@ -58,6 +59,7 @@ variable "dns_server_default" {
 
 variable "dns_server" {
   description = "Top Level dns_domain variable to work around default variable merger... The real Variable holder is 'dns_server_default'."
+  default     = ""
 }
 
 locals {
