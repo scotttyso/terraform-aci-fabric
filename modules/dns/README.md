@@ -1,4 +1,4 @@
-# dns - Add DNS Servers for APIC/switch domain resolution Terraform Module - aci_rest
+# dns - Add DNS Domains and Servers for APIC/switch domain resolution Terraform Module - aci_rest
 
 ## Usage
 
@@ -11,7 +11,7 @@ module "dns" {
 }
 ```
 
-This module will Add DNS Servers for Fabric FQDN resolution.
+This module will Add Search domains and the FQDN, then add DNS Servers for Fabric FQDN resolution.
 
 These resources are created:
 
@@ -76,10 +76,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dns\_domain | Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the FQDN.  Assign no to the rest. | <pre>map(object({<br>    domain = string<br>    fqdn   = string<br>  }))</pre> | n/a | yes |
-| dns\_epg | What EPG in the Mgmt Domain should be used. | `string` | `"default"` | no |
-| dns\_mgmt | (inb\|oob).  Should the Inband or Out-of-Band be used for DNS Requests. | `string` | `"oob"` | no |
-| dns\_server | Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred (true\|false). | <pre>object({<br>    server    = string<br>    preferred = bool<br>  })</pre> | n/a | yes |
+| dns\_domain | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_domain\_default'. | `any` | n/a | yes |
+| dns\_domain\_default | Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the FQDN.  Assign no to the rest. | <pre>object({<br>    domain = string<br>    fqdn   = string<br>  })</pre> | <pre>{<br>  "domain": "example.com",<br>  "fqdn": "no"<br>}</pre> | no |
+| dns\_epg | What EPG in the Management Domain should be used to reach the DNS Server(s). | `string` | `"default"` | no |
+| dns\_mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach the DNS Server(s). | `string` | `"oob"` | no |
+| dns\_server | Top Level dns\_domain variable to work around default variable merger... The real Variable holder is 'dns\_server\_default'. | `any` | n/a | yes |
+| dns\_server\_default | Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'. | <pre>object({<br>    server    = string<br>    preferred = bool<br>  })</pre> | <pre>{<br>  "preferred": false,<br>  "server": "198.18.1.1"<br>}</pre> | no |
 
 ## Outputs
 

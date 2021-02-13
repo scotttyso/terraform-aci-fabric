@@ -1,9 +1,9 @@
 /*
 API Information:
  - Class: "callhomeSmartGroup"
- - Distinguished Name: "uni/fabric/smartgroup-SmartCallHome_dg"
+ - Distinguished Name: "uni/fabric/smartgroup-{Smart CallHome Destination Group}"
 GUI Location:
- - Admin > External Data Collectors > Monitoring Destinations > Smart Callhome > [Smart CallHome Dest Group]
+ - Admin > External Data Collectors > Monitoring Destinations > Smart Callhome > [Smart CallHome Destination Group]
 */
 resource "aci_rest" "SmartCallHome_destGrp" {
   path       = "/api/node/mo/uni/fabric/smartgroup-${var.dest_group}.json"

@@ -61,7 +61,7 @@ No Modules.
 | isis\_poicy | ISIS Policy Name | `string` | `"default"` | no |
 | macsec\_policy | MACsec Policy Name | `string` | `"default"` | no |
 | mgmt\_policy | Management Access Policy Name | `string` | `"default"` | no |
-| pod\_pgrp | Pod Policy Group Name | `string` | `"default"` | no |
+| pod\_pgrp | Pod Policy Group Name.  This will be used to assign the following policies to the switches. | `string` | `"default"` | no |
 | snmp\_policy | SNMP Policy Name | `string` | `"default"` | no |
 
 ## Outputs

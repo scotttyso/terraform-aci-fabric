@@ -1,6 +1,6 @@
 variable "pod_pgrp" {
   type        = string
-  description = "Pod Policy Group Name"
+  description = "Pod Policy Group Name.  This will be used to assign the following policies to the switches."
   default     = "default"
 }
 

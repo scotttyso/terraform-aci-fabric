@@ -16,18 +16,14 @@ variable "bgp_rr" {
   type = object({
     node_id = number
   })
+  default = {
+    node_id = 101
+  }
   validation {
     condition = (
       length(var.bgp_rr.node_id) >= 101 &&
       length(var.bgp_rr.node_id) <= 4001
     )
-    error_message = "The Node ID Must be between 101 and 4001."
+    error_message = "For the BGP Route Reflector, the Node ID Must be between 101 and 4001."
   }
-}
-
-locals {
-  default_bgp_rr = {
-    node_id = "101"
-  }
-  merged_bgp_rr = merge(local.default_bgp_rr, var.bgp_rr)
 }

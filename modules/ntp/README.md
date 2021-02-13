@@ -1,4 +1,4 @@
-# ntp - Terraform Module to create NTP Servers - aci_rest
+# ntp - Terraform Module to Assign NTP Servers to ACI - aci_rest
 
 ## Usage
 
@@ -54,7 +54,8 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ntp | Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true). | <pre>object({<br>    ntp_server = string<br>    preferred  = bool<br>    mgmt       = string<br>    epg        = string<br>  })</pre> | n/a | yes |
+| ntp | Top Level ntp variable to work around default variable merger... The real Variable holder is 'ntp\_default'. | `any` | n/a | yes |
+| ntp\_default | Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true). | <pre>object({<br>    ntp_server = string<br>    preferred  = bool<br>    mgmt       = string<br>    epg        = string<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "ntp_server": "198.18.1.1",<br>  "preferred": false<br>}</pre> | no |
 
 ## Outputs
 

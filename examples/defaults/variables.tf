@@ -19,7 +19,9 @@ variable "aciUser" {
 }
 
 variable "aciPass" {
-  type = string
+  description = "NEVER Store your USERNAME or PASSWORD in a Public Repository"
+  type        = string
+  sensitive   = true
 }
 
 variable "aciUrl" {
