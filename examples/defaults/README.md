@@ -1,4 +1,4 @@
-# Terraform ACI Fabric Policies Module default Example
+# Terraform ACI Fabric Policies Module - default Example
 
 The purpose of this Example is to show the most basic example of the module when accepting all the defaults defined in the module.  Note that there are only four variables that need to be created for the modules which are snmp username and authentication key, snmp community string for communities, and for the trap server the user or community.  Obviously in a real deployment scenario you would want to change default IP addresses and other values in the modules.  But we want to show the most simple form of the deployment.
 
@@ -67,6 +67,9 @@ No resources.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| aciPass | n/a | `string` | n/a | yes |
+| aciUrl | This can be the IP or Hostname of the ACI Host you will be configuring | `string` | `"{{APIC_URL}}"` | no |
+| aciUser | If using a Domain with the User Remember to add apic#[domain]\<username> | `string` | n/a | yes |
 | auth\_key1 | n/a | `string` | n/a | yes |
 | community1 | n/a | `string` | n/a | yes |
 | snmp\_user1 | n/a | `string` | n/a | yes |
