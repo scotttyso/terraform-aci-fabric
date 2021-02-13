@@ -50,7 +50,7 @@ module "fabric_ntp" {
   version = "0.0.5"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
-  default = {
+  ntp = {
     "ntp_server1" = {
       # The default setting for epg is "default", I can accept that without adding it here
       # The default setting for mgmt is "oob", I can accept that without adding it here
