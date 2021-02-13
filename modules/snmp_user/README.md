@@ -1,44 +1,30 @@
-# snmp_clients - SNMP Clients Terraform Module - aci_rest
+# snmp_user - SNMP User Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_clients" {
+module "snmp_user" {
 
-  source = "terraform-aci-fabric//modules/snmp_clients"
+  source = "terraform-aci-fabric//modules/snmp_user"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Policy.
+This module will Add SNMP Users in the default SNMP Policy.
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+* [SNMP User](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
 
-SNMP Client Group:
-
-* Class: "snmpClientGrpP"
-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
-
-SNMP Clients:
-
-* Class: "snmpClientP"
-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
+* Class: "snmpUserP"
+* Distinguished Name: "uni/fabric/snmppol-default/user-{SNMP_User}"
 
 GUI Location:
 
-SNMP Client Group:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
-
-SNMP Clients:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
+* Fabric > Fabric Policies > Policies > Pod > SNMP > default: SNMP V3 Users
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -68,7 +54,11 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| snmp\_users | SNMP User Defination. | <pre>object({<br>    snmp_user = string<br>    priv_type = optional(string)<br>    priv_key  = optional(string)<br>    auth_type = optional(string)<br>    auth_key  = string<br>  })</pre> | n/a | yes |
+| auth\_key | Authentication Key.  A string between 8 and 32 Characters | `string` | n/a | yes |
+| auth\_type | Authentication Type.  Options are [hmac-sha1-96\|None]<br> - For None leave Blank.<br> - None is the option for md5 based authentication. | `string` | `""` | no |
+| priv\_key | Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication. | `string` | n/a | yes |
+| priv\_type | Options are (des\|None\|aes-128)<br> - For None leave Blank. | `string` | `""` | no |
+| snmp\_user | SNMP User or SNMP Community for authenticating to the SNMP Trap Server. | `string` | n/a | yes |
 
 ## Outputs
 

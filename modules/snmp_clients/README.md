@@ -15,28 +15,14 @@ This module will Add SNMP Clients to a SNMP Client Group in the default SNMP Pol
 
 These resources are created:
 
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 * [SNMP Clients](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
 API Information:
-
-SNMP Client Group:
-
-* Class: "snmpClientGrpP"
-* Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
-
-SNMP Clients:
 
 * Class: "snmpClientP"
 * Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}/client-[SNMP_Client]"
 
 GUI Location:
-
-SNMP Client Group:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
-
-SNMP Clients:
 
 * Fabric > Fabric Policies > Policies > Pod > SNMP > default > Client Group Policies: {Client Group Name} > Client Entries
 
@@ -68,10 +54,9 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| snmp\_client | Map of settings to be be merged with the snmp\_client\_defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
-| snmp\_client\_defaults | Associate a SNMP Client to a Client Group (AKA Management SNMP Access Control). | <pre>object({<br>    client     = string<br>    client_grp = string<br>    epg        = string<br>    mgmt       = string<br>  })</pre> | <pre>{<br>  "client": "198.18.1.1",<br>  "client_grp": "default_oob",<br>  "epg": "default",<br>  "mgmt": "oob"<br>}</pre> | no |
-| snmp\_client\_grp | Map of settings to be be merged with the snmp\_client\_grp\_defaults. Allowed keys are the same as for defaults. | `any` | n/a | yes |
-| snmp\_client\_grp\_defaults | Client Group, Mgmt Domain, and Associated EPG. | <pre>object({<br>    epg  = string<br>    mgmt = string<br>    name = string<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "name": "default_oob"<br>}</pre> | no |
+| client | IPv4 or IPv6 Address of the SNMP Client | `string` | `"198.18.1.1"` | no |
+| client\_group | SNMP Client Group Name | `string` | `"default_oob"` | no |
+| name | Descriptive Name for the SNMP Client | `string` | `"server1"` | no |
 
 ## Outputs
 

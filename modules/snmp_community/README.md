@@ -54,7 +54,8 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| communities | Add SNMP Commities to the Fabric default Policy. | <pre>object({<br>    # comm_descr: SNMP Community Description<br>    description = optional(string)<br>    # community: SNMP Community value<br>    community = string<br>  })</pre> | n/a | yes |
+| community | An SNMP Community String.  The community can be between 0 and 32 characters. | `string` | n/a | yes |
+| description | SNMP Community Description. | `string` | n/a | yes |
 
 ## Outputs
 

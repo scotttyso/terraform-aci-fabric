@@ -1,22 +1,45 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
-}
-
-variable "snmp_users" {
-  description = "SNMP User Defination."
-  type = object({
-    snmp_user = string
-    priv_type = optional(string)
-    priv_key  = optional(string)
-    auth_type = optional(string)
-    auth_key  = string
-  })
-}
-
-locals {
-  default_snmp_users = {
-    snmp_user = "user1"
-    auth_key  = "cisco123"
+variable "snmp_user" {
+  description = "SNMP User or SNMP Community for authenticating to the SNMP Trap Server."
+  type        = string
+  sensitive   = true
+  validation {
+    condition = (
+      length(var.snmp_user) >= 1 &&
+      length(var.snmp_user) <= 32 &&
+      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.snmp_user))
+    )
+    error_message = "The SNMP User is a Required Parameter and must be between 1 and 32 characters."
   }
-  merged_snmp_users = merge(local.default_snmp_users, var.snmp_users)
+}
+
+variable "priv_type" {
+  description = "Options are (des|None|aes-128)\n - For None leave Blank."
+  type        = string
+  default     = ""
+}
+
+variable "priv_key" {
+  description = "Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication."
+  type        = string
+  sensitive   = true
+}
+
+variable "auth_type" {
+  description = "Authentication Type.  Options are [hmac-sha1-96|None]\n - For None leave Blank.\n - None is the option for md5 based authentication."
+  type        = string
+  default     = ""
+}
+
+variable "auth_key" {
+  description = "Authentication Key.  A string between 8 and 32 Characters"
+  type        = string
+  sensitive   = true
+  validation {
+    condition = (
+      length(var.auth_key) >= 8 &&
+      length(var.auth_key) <= 32 &&
+      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.auth_key))
+    )
+    error_message = "The Authentication Key must be between 8 and 32 characters."
+  }
 }

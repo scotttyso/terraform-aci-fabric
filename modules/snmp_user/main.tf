@@ -6,19 +6,18 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Pod > SNMP > default: SNMP V3 Users
 */
 resource "aci_rest" "snmp_users" {
-  for_each   = var.snmp_users
-  path       = "/api/node/mo/uni/fabric/snmppol-default/user-${var.value.snmp_user}.json"
+  path       = "/api/node/mo/uni/fabric/snmppol-default/user-${var.snmp_user}.json"
   class_name = "snmpUserP"
   payload    = <<EOF
 {
     "snmpUserP": {
         "attributes": {
-            "dn": "uni/fabric/snmppol-default/user-${var.value.snmp_user}",
-            "name": "${var.value.snmp_user}",
-            "privType": "${var.value.priv_type}",
-            "privKey": "${var.value.priv_key}",
-            "authType": "${var.value.auth_type}",
-            "authKey": "${var.value.auth_key}"
+            "dn": "uni/fabric/snmppol-default/user-${var.snmp_user}",
+            "name": "${var.snmp_user}",
+            "privType": "${var.priv_type}",
+            "privKey": "${var.priv_key}",
+            "authType": "${var.auth_type}",
+            "authKey": "${var.auth_key}"
         },
         "children": []
     }
