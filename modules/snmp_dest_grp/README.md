@@ -56,7 +56,7 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| description | SNMP Destination Group Description. | `string` | n/a | yes |
+| description | SNMP Destination Group Description. | `string` | `""` | no |
 | dest\_group | Create the SNMP Destination Group: Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group | `string` | `"default_oob"` | no |
 
 ## Outputs

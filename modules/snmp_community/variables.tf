@@ -7,7 +7,7 @@ variable "community" {
       length(var.community) <= 32 &&
       can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.community))
     )
-    error_message = "The Community is a Required Parameter and must be between 1 and 32 characters."
+    error_message = "The Community is a Required Parameter and must be between 1 and 32 characters.  This is a Sensitive Parameter."
   }
 }
 

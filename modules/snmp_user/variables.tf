@@ -19,9 +19,10 @@ variable "priv_type" {
 }
 
 variable "priv_key" {
-  description = "Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication."
+  description = "Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication.  This is a Sensitive Parameter."
   type        = string
   sensitive   = true
+  default     = ""
 }
 
 variable "auth_type" {
@@ -31,7 +32,7 @@ variable "auth_type" {
 }
 
 variable "auth_key" {
-  description = "Authentication Key.  A string between 8 and 32 Characters"
+  description = "Authentication Key.  A string between 8 and 32 Characters.  This is a Sensitive Parameter."
   type        = string
   sensitive   = true
   validation {

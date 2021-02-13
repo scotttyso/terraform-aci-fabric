@@ -11,6 +11,7 @@ variable "dest_group" {
 variable "description" {
   description = "Syslog Destination Group Description."
   type        = string
+  default     = ""
   validation {
     condition = (
       length(var.description) >= 0 &&

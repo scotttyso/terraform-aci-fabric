@@ -56,7 +56,7 @@ No Modules.
 |------|-------------|------|---------|:--------:|
 | console\_sev | Options are (emergencies\|alerts\|critical).  Set the console logging level. | `string` | `"critical"` | no |
 | console\_state | Options are (enabled\|disabled).  Enable or disable console logging on the switches. | `string` | `"enabled"` | no |
-| description | Syslog Destination Group Description. | `string` | n/a | yes |
+| description | Syslog Destination Group Description. | `string` | `""` | no |
 | dest\_group | Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}. | `string` | `"default_oob"` | no |
 | incl\_msec | Options are (true\|false).  Include msec in the log timestamp. | `bool` | `true` | no |
 | local\_sev | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Set the local logging level. | `string` | `"information"` | no |
