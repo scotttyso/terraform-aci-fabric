@@ -7,7 +7,7 @@ module "fabric_bgp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/bgp"
   version = "0.0.5"
   bgp_asn = 65002
-  default = {
+  bgp_rr = {
     "spine101" = {
       node_id = 101
     },

@@ -23,7 +23,7 @@ module "fabric_dns" {
   version = "0.0.5"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
-  default = {
+  dns_domain = {
     "dmz_domain" = {
       domain = dmz.example.com
       # The default setting for fqdn is "no", I can accept that without adding it here
@@ -31,10 +31,12 @@ module "fabric_dns" {
     "prod_domain" = {
       domain = prod.example.com
       fqdn   = "yes"
-    },
+    }
+  }
+  dns_server = {
     "dns_server1" = {
       preferred = true
-      server    = "198.18.1.1"
+      # The default server is 198.18.1.1 so I am accepting it here.
     },
     "dns_server2" = {
       # The default setting for preferred is "false", I can accept that without adding it here
@@ -53,7 +55,7 @@ module "fabric_ntp" {
       # The default setting for epg is "default", I can accept that without adding it here
       # The default setting for mgmt is "oob", I can accept that without adding it here
       preferred = true
-      server    = "198.18.1.1"
+      # The default server is 198.18.1.1 so I am accepting it here.
     },
     "ntp_server2" = {
       # The default setting for preferred is "false", I can accept that without adding it here
