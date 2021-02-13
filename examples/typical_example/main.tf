@@ -25,12 +25,12 @@ module "fabric_dns" {
   # dns_mgmt  = "oob"
   default = {
     "dmz_domain" = {
-      domain  = dmz.example.com
+      domain = dmz.example.com
       # The default setting for fqdn is "no", I can accept that without adding it here
     },
     "prod_domain" = {
-      domain  = prod.example.com
-      fqdn    = "yes"
+      domain = prod.example.com
+      fqdn   = "yes"
     },
     "dns_server1" = {
       preferred = true
@@ -38,7 +38,7 @@ module "fabric_dns" {
     },
     "dns_server2" = {
       # The default setting for preferred is "false", I can accept that without adding it here
-      server    = "198.18.1.2"
+      server = "198.18.1.2"
     }
   }
 }
@@ -57,7 +57,7 @@ module "fabric_ntp" {
     },
     "ntp_server2" = {
       # The default setting for preferred is "false", I can accept that without adding it here
-      server    = "198.18.1.2"
+      server = "198.18.1.2"
     }
   }
 }
@@ -68,19 +68,19 @@ module "fabric_pod_policy" {
 }
 
 module "fabric_smart_callhome" {
-  source        = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/smart_callhome"
-  version       = "0.0.5"
-  contact_info  = "admin-group@example.com"
-  phone_number  = "+1 408-555-5555"
-  street_addr   = "Two Cisco Way, San Jose, CA 90210"
-  contract_id   = "44444444"
-  customer_id   = "44444444"
-  site_id       = "44444444"
-  smtp_relay    = "smtp2@example.com"
+  source       = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/smart_callhome"
+  version      = "0.0.5"
+  contact_info = "admin-group@example.com"
+  phone_number = "+1 408-555-5555"
+  street_addr  = "Two Cisco Way, San Jose, CA 90210"
+  contract_id  = "44444444"
+  customer_id  = "44444444"
+  site_id      = "44444444"
+  smtp_relay   = "smtp2@example.com"
   # Using the Default smtp_port of 25
-  from_email    = "admin-group@example.com"
-  reply_email   = "admin-group@example.com"
-  to_email      = "admin-group@example.com"
+  from_email  = "admin-group@example.com"
+  reply_email = "admin-group@example.com"
+  to_email    = "admin-group@example.com"
   # Using the Default Management Domain of "oob"
   # Using the Default oob EPG of "default"
 }
@@ -99,8 +99,8 @@ module "fabric_snmp_client2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients"
   version = "0.0.5"
   # Using the default client_group
-  name    = "server2"
-  client  = "198.18.1.2"
+  name   = "server2"
+  client = "198.18.1.2"
 }
 
 module "fabric_snmp_community1" {
@@ -129,32 +129,32 @@ module "fabric_snmp_trap_source" {
 }
 
 module "fabric_snmp_trap_server1" {
-  source        = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
-  version       = "0.0.5"
+  source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
+  version = "0.0.5"
   # insert required variables here
-  snmp_string   = var.community1
+  snmp_string = var.community1
 }
 
 module "fabric_snmp_trap_server2" {
-  source        = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
-  version       = "0.0.5"
+  source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
+  version = "0.0.5"
   # insert required variables here
-  snmp_server   = "198.18.1.2"
-  snmp_string   = var.snmp_user2
-  snmp_version  = "v3"
+  snmp_server  = "198.18.1.2"
+  snmp_string  = var.snmp_user2
+  snmp_version = "v3"
 }
 
 module "fabric_snmp_user1" {
-  source    = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
-  version   = "0.0.5"
+  source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
+  version = "0.0.5"
   # insert required variables here
   auth_key  = var.auth_key1
   snmp_user = var.snmp_user1
 }
 
 module "fabric_snmp_user2" {
-  source    = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
-  version   = "0.0.5"
+  source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
+  version = "0.0.5"
   # insert required variables here
   auth_key  = var.auth_key2
   auth_type = "hmac-sha1-96"
@@ -179,8 +179,8 @@ module "fabric_syslog_server1" {
 }
 
 module "fabric_syslog_server2" {
-  source        = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server"
-  version       = "0.0.5"
+  source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server"
+  version = "0.0.5"
   # Accepting the Same defaults as server1 except the IP of the destination
   syslog_server = "198.18.1.2"
 }

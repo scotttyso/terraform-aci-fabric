@@ -49,17 +49,27 @@ No provider.
 
 | Name | Source | Version |
 |------|--------|---------|
-| fabric_best_practices | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/best_practices | 0.0.3 |
-| fabric_snmp_client_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_client_grp | 0.0.3 |
-| fabric_snmp_clients | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients | 0.0.3 |
-| fabric_snmp_community | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community | 0.0.3 |
-| fabric_snmp_dest_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_dest_grp | 0.0.3 |
-| fabric_snmp_trap_server | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server | 0.0.3 |
-| fabric_snmp_trap_source | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_source | 0.0.3 |
-| fabric_snmp_user | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user | 0.0.3 |
-| fabric_syslog_dest_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_dest_grp | 0.0.3 |
-| fabric_syslog_server | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server | 0.0.3 |
-| fabric_syslog_source | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_source | 0.0.3 |
+| fabric_best_practices | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/best_practices | 0.0.5 |
+| fabric_bgp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/bgp | 0.0.5 |
+| fabric_dns | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/dns | 0.0.5 |
+| fabric_ntp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/ntp | 0.0.5 |
+| fabric_pod_policy | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/pod_policy | 0.0.5 |
+| fabric_smart_callhome | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/smart_callhome | 0.0.5 |
+| fabric_snmp_client1 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients | 0.0.5 |
+| fabric_snmp_client2 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients | 0.0.5 |
+| fabric_snmp_client_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_client_grp | 0.0.5 |
+| fabric_snmp_community1 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community | 0.0.5 |
+| fabric_snmp_community2 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community | 0.0.5 |
+| fabric_snmp_dest_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_dest_grp | 0.0.5 |
+| fabric_snmp_trap_server1 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server | 0.0.5 |
+| fabric_snmp_trap_server2 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server | 0.0.5 |
+| fabric_snmp_trap_source | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_source | 0.0.5 |
+| fabric_snmp_user1 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user | 0.0.5 |
+| fabric_snmp_user2 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user | 0.0.5 |
+| fabric_syslog_dest_grp | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_dest_grp | 0.0.5 |
+| fabric_syslog_server1 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server | 0.0.5 |
+| fabric_syslog_server2 | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server | 0.0.5 |
+| fabric_syslog_source | app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_source | 0.0.5 |
 
 ## Resources
 
@@ -70,11 +80,15 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aciPass | NEVER Store your USERNAME or PASSWORD in a Public Repository | `string` | n/a | yes |
-| aciUrl | This can be the IP or Hostname of the ACI Host you will be configuring | `string` | `"https://brahma-apic1.rich.ciscolabs.com"` | no |
+| aciUrl | This can be the IP or Hostname of the ACI Host you will be configuring | `string` | `"https://brahma-apic2.rich.ciscolabs.com"` | no |
 | aciUser | If using a Domain with the User Remember to add apic#[domain]\<username> | `string` | n/a | yes |
 | auth\_key1 | n/a | `string` | n/a | yes |
+| auth\_key2 | n/a | `string` | n/a | yes |
 | community1 | n/a | `string` | n/a | yes |
+| community2 | n/a | `string` | n/a | yes |
+| priv\_key2 | n/a | `string` | n/a | yes |
 | snmp\_user1 | n/a | `string` | n/a | yes |
+| snmp\_user2 | n/a | `string` | n/a | yes |
 
 ## Outputs
 
