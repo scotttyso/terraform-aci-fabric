@@ -1,8 +1,8 @@
-# Terraform ACI Service Module
+# Terraform ACI Fabric Policies Module
 
 The Cisco ACI Terraform Provider is available in the Terraform Registry at <https://registry.terraform.io/providers/CiscoDevNet/aci/latest>.  This repository contains example modules that use the provider to create terraform configuration files.
 
-This Modules and it's sub-modules are used to Automate an ACI Fabric Deployment, using the ACI provider available through the [Terraform registry](<https://registry.terraform.io/providers/CiscoDevNet/aci/latest>).
+This Modules and it's sub-modules are used to Automate an ACI Fabric Policy Deployment, using the ACI provider available through the [Terraform registry](<https://registry.terraform.io/providers/CiscoDevNet/aci/latest>).
 <!-- Inspired by and adapted from [this doc](https://registry.terraform.io/providers/CiscoDevNet/aci/latest) -->
 and its [source code](<https://github.com/CiscoDevNet/terraform-provider-aci>).
 
