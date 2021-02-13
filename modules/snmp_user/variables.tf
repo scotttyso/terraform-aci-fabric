@@ -1,5 +1,5 @@
 variable "snmp_user" {
-  description = "SNMP User or SNMP Community for authenticating to the SNMP Trap Server."
+  description = "SNMP User Name."
   type        = string
   sensitive   = true
   validation {

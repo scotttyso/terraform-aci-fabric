@@ -7,6 +7,7 @@ variable "dest_group" {
 variable "snmp_server" {
   description = "IPv4 or IPv6 Address of the SNMP Trap Server"
   type        = string
+  default     = "198.18.1.1"
   validation {
     condition     = (can(regexall("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|[a-fA-F0-9:]+$", var.snmp_server)))
     error_message = "The SNMP Server must be a valid IPv4 or IPv6 Address."
@@ -27,7 +28,7 @@ variable "snmp_port" {
 }
 
 variable "snmp_string" {
-  description = "SNMP User or SNMP Community for authenticating to the SNMP Trap Server."
+  description = "SNMP User or SNMP Community for authenticating to the SNMP Trap Server.  This is a Sensitive Parameter."
   type        = string
   sensitive   = true
   validation {

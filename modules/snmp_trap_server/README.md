@@ -72,8 +72,8 @@ No Modules.
 | mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach this SNMP Trap Server | `string` | `"oob"` | no |
 | security\_level | Options are (auth\|noauth\|priv)<br> - auth: Authentication and no privacy<br> - noauth: Default.  No authentication and no privacy.<br> - priv: Authentication and privacy | `string` | `"noauth"` | no |
 | snmp\_port | Port for the SNMP Trap Server.  Default is 162 | `number` | `162` | no |
-| snmp\_server | IPv4 or IPv6 Address of the SNMP Trap Server | `string` | n/a | yes |
-| snmp\_string | SNMP User or SNMP Community for authenticating to the SNMP Trap Server. | `string` | n/a | yes |
+| snmp\_server | IPv4 or IPv6 Address of the SNMP Trap Server | `string` | `"198.18.1.1"` | no |
+| snmp\_string | SNMP User or SNMP Community for authenticating to the SNMP Trap Server.  This is a Sensitive Parameter. | `string` | n/a | yes |
 | snmp\_version | Options are (v1\|v2c\|v3).  Version 3 would be for SNMP User | `string` | `"v2c"` | no |
 
 ## Outputs

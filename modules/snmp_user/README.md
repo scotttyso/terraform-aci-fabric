@@ -58,7 +58,7 @@ No Modules.
 | auth\_type | Authentication Type.  Options are [hmac-sha1-96\|None]<br> - For None leave Blank.<br> - None is the option for md5 based authentication. | `string` | `""` | no |
 | priv\_key | Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication.  This is a Sensitive Parameter. | `string` | `""` | no |
 | priv\_type | Options are (des\|None\|aes-128)<br> - For None leave Blank. | `string` | `""` | no |
-| snmp\_user | SNMP User or SNMP Community for authenticating to the SNMP Trap Server. | `string` | n/a | yes |
+| snmp\_user | SNMP User Name. | `string` | n/a | yes |
 
 ## Outputs
 
