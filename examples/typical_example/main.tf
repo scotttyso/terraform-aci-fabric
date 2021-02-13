@@ -1,11 +1,11 @@
 module "fabric_best_practices" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/best_practices"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_bgp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/bgp"
-  version = "0.0.6"
+  version = "0.0.5"
   bgp_asn = 65002
   default = {
     # Because the only variable is node_id I need to configure even the default here as the loop would overwrite the default
@@ -20,7 +20,7 @@ module "fabric_bgp" {
 
 module "fabric_dns" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/dns"
-  version = "0.0.6"
+  version = "0.0.5"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
   default = {
@@ -45,7 +45,7 @@ module "fabric_dns" {
 
 module "fabric_ntp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/ntp"
-  version = "0.0.6"
+  version = "0.0.5"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
   default = {
@@ -64,12 +64,12 @@ module "fabric_ntp" {
 
 module "fabric_pod_policy" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/pod_policy"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_smart_callhome" {
   source       = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/smart_callhome"
-  version      = "0.0.6"
+  version      = "0.0.5"
   contact_info = "admin-group@example.com"
   phone_number = "+1 408-555-5555"
   street_addr  = "Two Cisco Way, San Jose, CA 90210"
@@ -87,17 +87,17 @@ module "fabric_smart_callhome" {
 
 module "fabric_snmp_client_grp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_client_grp"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_snmp_client1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_snmp_client2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_clients"
-  version = "0.0.6"
+  version = "0.0.5"
   # Using the default client_group
   name   = "server2"
   client = "198.18.1.2"
@@ -105,39 +105,39 @@ module "fabric_snmp_client2" {
 
 module "fabric_snmp_community1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   community = var.secure_community1
 }
 
 module "fabric_snmp_community2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   community = var.secure_community2
 }
 
 module "fabric_snmp_dest_grp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_dest_grp"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_snmp_trap_source" {
   source        = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_source"
-  version       = "0.0.6"
+  version       = "0.0.5"
   snmp_messages = "all"
 }
 
 module "fabric_snmp_trap_server1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   snmp_string = var.community1
 }
 
 module "fabric_snmp_trap_server2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_trap_server"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   snmp_server  = "198.18.1.2"
   snmp_string  = var.snmp_user2
@@ -146,7 +146,7 @@ module "fabric_snmp_trap_server2" {
 
 module "fabric_snmp_user1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   auth_key  = var.auth_key1
   snmp_user = var.snmp_user1
@@ -154,7 +154,7 @@ module "fabric_snmp_user1" {
 
 module "fabric_snmp_user2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_user"
-  version = "0.0.6"
+  version = "0.0.5"
   # insert required variables here
   auth_key  = var.auth_key2
   auth_type = "hmac-sha1-96"
@@ -165,22 +165,22 @@ module "fabric_snmp_user2" {
 
 module "fabric_syslog_dest_grp" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_dest_grp"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_syslog_source" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_source"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_syslog_server1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server"
-  version = "0.0.6"
+  version = "0.0.5"
 }
 
 module "fabric_syslog_server2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/syslog_server"
-  version = "0.0.6"
+  version = "0.0.5"
   # Accepting the Same defaults as server1 except the IP of the destination
   syslog_server = "198.18.1.2"
 }
