@@ -68,7 +68,7 @@ No resources.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | aciPass | n/a | `string` | n/a | yes |
-| aciUrl | This can be the IP or Hostname of the ACI Host you will be configuring | `string` | `"{{APIC_URL}}"` | no |
+| aciUrl | This can be the IP or Hostname of the ACI Host you will be configuring | `string` | `"https://brahma-apic1.rich.ciscolabs.com"` | no |
 | aciUser | If using a Domain with the User Remember to add apic#[domain]\<username> | `string` | n/a | yes |
 | auth\_key1 | n/a | `string` | n/a | yes |
 | community1 | n/a | `string` | n/a | yes |
