@@ -55,8 +55,10 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| syslog | Syslog Destination and Source Groups | <pre>object({<br>    # community: SNMP Community value<br>    dest_group    = string<br>    description   = optional(string)<br>    log_format    = string<br>    incl_msec     = bool<br>    timezone      = bool<br>    console_state = string<br>    console_sev   = string<br>    local_state   = string<br>    local_sev     = string<br>    source_grp    = string<br>    incl_types    = string<br>    min_level     = string<br>  })</pre> | n/a | yes |
-| syslog\_servers | Syslog Remote Servers | <pre>object({<br>    # community: SNMP Community value<br>    dest_group      = string<br>    syslog_name     = string<br>    syslog_server   = string<br>    syslog_port     = number<br>    syslog_severity = string<br>    facility        = string<br>    mgmt            = string<br>    epg             = string<br>  })</pre> | n/a | yes |
+| dest\_group | Syslog Destination Group Name.  This should have already been created by the 'syslog\_dest\_grp' module | `string` | `"default_oob"` | no |
+| incl\_types | Options are (None\|all\|audit\|events\|faults\|session).  Default is faults.  We recommend 'alerts,faults,events,session' or 'all', same result. | `string` | `"alerts,faults,events,session"` | no |
+| min\_level | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Default is warnings.  Best practice is information. | `string` | `"information"` | no |
+| source\_grp | Syslog Source Group Name.  Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source. | `string` | `"default_oob"` | no |
 
 ## Outputs
 

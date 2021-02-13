@@ -8,7 +8,7 @@ variable "snmp_server" {
   description = "IPv4 or IPv6 Address of the SNMP Trap Server"
   type        = string
   validation {
-    condition = ( can(regexall("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|[a-fA-F0-9:]+$", var.syslog_server)))
+    condition     = (can(regexall("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|[a-fA-F0-9:]+$", var.snmp_server)))
     error_message = "The SNMP Server must be a valid IPv4 or IPv6 Address."
   }
 }
@@ -19,10 +19,10 @@ variable "snmp_port" {
   default     = 162
   validation {
     condition = (
-      length(var.syslog_port) >= 1 &&
-      length(var.syslog_port) <= 65535
+      length(var.snmp_port) >= 1 &&
+      length(var.snmp_port) <= 65535
     )
-    error_message = "The SNMP TRAP Server Port must be between 1 and 65535"
+    error_message = "The SNMP TRAP Server Port must be between 1 and 65535."
   }
 }
 
@@ -32,9 +32,9 @@ variable "snmp_string" {
   sensitive   = true
   validation {
     condition = (
-      length(var.snmp_user) >= 1 &&
-      length(var.snmp_user) <= 32 &&
-      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.snmp_user))
+      length(var.snmp_string) >= 1 &&
+      length(var.snmp_string) <= 32 &&
+      can(regexall("^([a-zA-Z0-9\\-\\_\\.]+)$", var.snmp_string))
     )
     error_message = "The SNMP Trap Server user or community is a Required Parameter and must be between 1 and 32 characters."
   }
@@ -45,7 +45,7 @@ variable "security_level" {
   type        = string
   default     = "noauth"
   validation {
-    condition = (can(regexall("^(auth|noauth|priv)$", var.security_level)))
+    condition     = (can(regexall("^(auth|noauth|priv)$", var.security_level)))
     error_message = "SNMP Trap Security Level options are (auth|noauth|priv)."
   }
 }
@@ -55,7 +55,7 @@ variable "snmp_version" {
   type        = string
   default     = "v2c"
   validation {
-    condition = (can(regexall("^(v1|v2c|v3)$", var.security_level)))
+    condition     = (can(regexall("^(v1|v2c|v3)$", var.snmp_version)))
     error_message = "SNMP Trap Version options are (v1|v2c|v3)."
   }
 }
@@ -65,7 +65,7 @@ variable "mgmt" {
   type        = string
   default     = "oob"
   validation {
-    condition = ( var.epg == "inb" || var.epg == "oob" )
+    condition     = (var.mgmt == "inb" || var.mgmt == "oob")
     error_message = "The SNMP Trap Server Management Domain must be 'inb' or 'oob'."
   }
 }

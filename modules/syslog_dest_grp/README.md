@@ -54,8 +54,15 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| syslog | Syslog Destination and Source Groups | <pre>object({<br>    # community: SNMP Community value<br>    dest_group    = string<br>    description   = optional(string)<br>    log_format    = string<br>    incl_msec     = bool<br>    timezone      = bool<br>    console_state = string<br>    console_sev   = string<br>    local_state   = string<br>    local_sev     = string<br>    source_grp    = string<br>    incl_types    = string<br>    min_level     = string<br>  })</pre> | n/a | yes |
-| syslog\_servers | Syslog Remote Servers | <pre>object({<br>    # community: SNMP Community value<br>    dest_group      = string<br>    syslog_name     = string<br>    syslog_server   = string<br>    syslog_port     = number<br>    syslog_severity = string<br>    facility        = string<br>    mgmt            = string<br>    epg             = string<br>  })</pre> | n/a | yes |
+| console\_sev | Options are (emergencies\|alerts\|critical).  Set the console logging level. | `string` | `"critical"` | no |
+| console\_state | Options are (enabled\|disabled).  Enable or disable console logging on the switches. | `string` | `"enabled"` | no |
+| description | Syslog Destination Group Description. | `string` | n/a | yes |
+| dest\_group | Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}. | `string` | `"default_oob"` | no |
+| incl\_msec | Options are (true\|false).  Include msec in the log timestamp. | `bool` | `true` | no |
+| local\_sev | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Set the local logging level. | `string` | `"information"` | no |
+| local\_state | Options are [enabled\|disabled].  Enable or disable console logging on the switches. | `string` | `"enabled"` | no |
+| log\_format | Options are (aci\|nxos).  Default is aci.  Choose whether you want the logs to be sent in NX-OS format or ACI Format. | `string` | `"aci"` | no |
+| timezone | Options are (true\|false).  Include the local time zone in the log timestamp. | `bool` | `true` | no |
 
 ## Outputs
 

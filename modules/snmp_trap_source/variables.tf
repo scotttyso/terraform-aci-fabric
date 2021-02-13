@@ -18,6 +18,6 @@ variable "snmp_messages" {
     condition = (
       var.snmp_messages == "" || can(regexall("(all|audit|events|faults|session|[a-z,]+)", var.snmp_messages))
     )
-    error_message = "The SNMP Messages options are [none|all|audit|events|faults|session] or a comma seperated combination"
+    error_message = "The SNMP Messages options are [none|all|audit|events|faults|session] or a comma seperated combination."
   }
 }

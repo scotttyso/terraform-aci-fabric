@@ -13,7 +13,7 @@ variable "mgmt" {
   type        = string
   default     = "oob"
   validation {
-    condition = ( var.epg == "inb" || var.epg == "oob" )
+    condition     = (var.mgmt == "inb" || var.mgmt == "oob")
     error_message = "The SNMP Client Group Management Domain must be 'inb' or 'oob'."
   }
 }

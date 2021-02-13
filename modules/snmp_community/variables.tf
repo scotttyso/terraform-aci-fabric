@@ -14,6 +14,7 @@ variable "community" {
 variable "description" {
   description = "SNMP Community Description."
   type        = string
+  default     = ""
   validation {
     condition = (
       length(var.description) >= 0 &&

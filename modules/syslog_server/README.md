@@ -54,8 +54,14 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| syslog | Syslog Destination and Source Groups | <pre>object({<br>    # community: SNMP Community value<br>    dest_group    = string<br>    description   = optional(string)<br>    log_format    = string<br>    incl_msec     = bool<br>    timezone      = bool<br>    console_state = string<br>    console_sev   = string<br>    local_state   = string<br>    local_sev     = string<br>    source_grp    = string<br>    incl_types    = string<br>    min_level     = string<br>  })</pre> | n/a | yes |
-| syslog\_servers | Syslog Remote Servers | <pre>object({<br>    # community: SNMP Community value<br>    dest_group      = string<br>    syslog_name     = string<br>    syslog_server   = string<br>    syslog_port     = number<br>    syslog_severity = string<br>    facility        = string<br>    mgmt            = string<br>    epg             = string<br>  })</pre> | n/a | yes |
+| dest\_group | Syslog Destination Group Name.  This should have already been created by the 'syslog\_dest\_grp' module. | `string` | `"default_oob"` | no |
+| epg | Define EPG within the Management Domain to reach this Remote Syslog Server. | `string` | `"default"` | no |
+| facility | Options are (local[0-7]).  Default is local7. | `string` | `"local7"` | no |
+| mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach this Remote Syslog Server. | `string` | `"oob"` | no |
+| syslog\_name | A Descriptive Name for the Syslog Remote Destination. | `string` | `"default_oob"` | no |
+| syslog\_port | Default port for Syslog is 514. | `number` | `514` | no |
+| syslog\_server | IPv4 or IPv6 Address for the Syslog Remote Server. | `string` | `"198.18.1.1"` | no |
+| syslog\_severity | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Default is warnings.  Best practice is information. | `string` | `"information"` | no |
 
 ## Outputs
 

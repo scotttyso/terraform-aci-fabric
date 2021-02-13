@@ -55,7 +55,7 @@ No Modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | community | An SNMP Community String.  The community can be between 0 and 32 characters. | `string` | n/a | yes |
-| description | SNMP Community Description. | `string` | n/a | yes |
+| description | SNMP Community Description. | `string` | `""` | no |
 
 ## Outputs
 

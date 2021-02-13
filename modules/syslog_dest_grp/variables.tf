@@ -1,5 +1,5 @@
 variable "dest_group" {
-  description = "Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}"
+  description = "Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}."
   type        = string
   default     = "default_oob"
 }
@@ -26,8 +26,8 @@ variable "log_format" {
   type        = string
   default     = "aci"
   validation {
-    condition = ( var.log_format == "aci" || var.log_format == "nxos")
-    error_message = "Syslog Log Format options are (aci|nxos)"
+    condition     = (var.log_format == "aci" || var.log_format == "nxos")
+    error_message = "Syslog Log Format options are (aci|nxos)."
   }
 }
 
@@ -36,8 +36,8 @@ variable "incl_msec" {
   type        = bool
   default     = true
   validation {
-    condition = ( var.incl_msec == true || var.incl_msec == false)
-    error_message = "Include Millisecond options are (true|false)"
+    condition     = (var.incl_msec == true || var.incl_msec == false)
+    error_message = "Include Millisecond options are (true|false)."
   }
 }
 
@@ -46,8 +46,8 @@ variable "timezone" {
   type        = bool
   default     = true
   validation {
-    condition = ( var.timezone == true || var.timezone == false)
-    error_message = "Timezone options are (true|false)"
+    condition     = (var.timezone == true || var.timezone == false)
+    error_message = "Timezone options are (true|false)."
   }
 }
 
@@ -56,8 +56,8 @@ variable "console_state" {
   type        = string
   default     = "enabled"
   validation {
-    condition = ( var.console_state == "enabled" || var.console_state == "disabled")
-    error_message = "Syslog Console State Options are (enabled|disabled)"
+    condition     = (var.console_state == "enabled" || var.console_state == "disabled")
+    error_message = "Syslog Console State Options are (enabled|disabled)."
   }
 }
 
@@ -66,7 +66,7 @@ variable "console_sev" {
   type        = string
   default     = "critical"
   validation {
-    condition = ( can(regexall("^(emergencies|alerts|critical)$", var.console_sev)))
+    condition     = (can(regexall("^(emergencies|alerts|critical)$", var.console_sev)))
     error_message = "The Console Severity must be one of the following:\n (emergencies|alerts|critical)."
   }
 }
@@ -76,8 +76,8 @@ variable "local_state" {
   type        = string
   default     = "enabled"
   validation {
-    condition = ( var.local_state == "enabled" || var.local_state == "disabled")
-    error_message = "Syslog Local State Options are (enabled|disabled)"
+    condition     = (var.local_state == "enabled" || var.local_state == "disabled")
+    error_message = "Syslog Local State Options are (enabled|disabled)."
   }
 }
 
@@ -86,7 +86,7 @@ variable "local_sev" {
   type        = string
   default     = "information"
   validation {
-    condition = ( can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.local_sev)))
+    condition     = (can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.local_sev)))
     error_message = "The Local Severity must be one of the following:\n (emergencies|alerts|critical|errors|warnings|notifications|information|debugging)."
   }
 }

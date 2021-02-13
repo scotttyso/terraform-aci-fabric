@@ -21,7 +21,7 @@ variable "min_level" {
   type        = string
   default     = "information"
   validation {
-    condition = ( can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.syslog_severity)))
+    condition     = (can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.min_level)))
     error_message = "The Syslog Source Minimum Level must be one of the following:\n (emergencies|alerts|critical|errors|warnings|notifications|information|debugging)."
   }
 }
