@@ -26,8 +26,8 @@ variable "syslog_port" {
   default     = 514
   validation {
     condition = (
-      length(var.syslog_port) >= 1 &&
-      length(var.syslog_port) <= 65535
+      var.syslog_port >= 1 &&
+      var.syslog_port <= 65535
     )
     error_message = "The Syslog Port must be between 1 and 65535."
   }

@@ -20,8 +20,8 @@ variable "snmp_port" {
   default     = 162
   validation {
     condition = (
-      length(var.snmp_port) >= 1 &&
-      length(var.snmp_port) <= 65535
+      var.snmp_port >= 1 &&
+      var.snmp_port <= 65535
     )
     error_message = "The SNMP TRAP Server Port must be between 1 and 65535."
   }

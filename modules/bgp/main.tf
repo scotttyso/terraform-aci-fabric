@@ -30,14 +30,14 @@ GUI Location:
 */
 resource "aci_rest" "bgp_rr" {
   for_each   = var.bgp_rr
-  path       = "/api/node/mo/uni/fabric/bgpInstP-default/rr/node-${each.value.node_id}.json"
+  path       = "/api/node/mo/uni/fabric/bgpInstP-default/rr/node-${each.value["node_id"]}.json"
   class_name = "bgpRRNodePEp"
   payload    = <<EOF
 {
     "bgpRRNodePEp": {
         "attributes": {
-            "dn": "uni/fabric/bgpInstP-default/rr/node-${each.value.node_id}",
-            "id": "${each.value.node_id}",
+            "dn": "uni/fabric/bgpInstP-default/rr/node-${each.value["node_id"]}",
+            "id": "${each.value["node_id"]}",
         },
         "children": []
     }

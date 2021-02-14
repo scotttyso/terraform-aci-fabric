@@ -25,11 +25,11 @@ module "fabric_dns" {
   # dns_mgmt  = "oob"
   dns_domain = {
     "dmz_domain" = {
-      domain = dmz.example.com
+      domain = "dmz.example.com"
       # The default setting for fqdn is "no", I can accept that without adding it here
     },
     "prod_domain" = {
-      domain = prod.example.com
+      domain = "prod.example.com"
       fqdn   = "yes"
     }
   }
@@ -50,7 +50,7 @@ module "fabric_ntp" {
   version = "0.0.5"
   # The default "oob" mgmt Domain is being used here so there is no need for: 
   # dns_mgmt  = "oob"
-  default = {
+  ntp = {
     "ntp_server1" = {
       # The default setting for epg is "default", I can accept that without adding it here
       # The default setting for mgmt is "oob", I can accept that without adding it here
@@ -109,14 +109,14 @@ module "fabric_snmp_community1" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community"
   version = "0.0.5"
   # insert required variables here
-  community = var.secure_community1
+  community = var.community1
 }
 
 module "fabric_snmp_community2" {
   source  = "app.terraform.io/Cisco-ITS-TigerTeam/fabric/aci//modules/snmp_community"
   version = "0.0.5"
   # insert required variables here
-  community = var.secure_community2
+  community = var.community2
 }
 
 module "fabric_snmp_dest_grp" {
