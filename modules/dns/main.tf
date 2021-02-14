@@ -6,16 +6,16 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Domains
 */
 resource "aci_rest" "dns_domain" {
-  for_each   = var.merged_dns_domain
-  path       = "/api/node/mo/uni/fabric/dnsp-default/dom-[${each.value.domain}].json"
+  for_each   = local.dns_domain
+  path       = "/api/node/mo/uni/fabric/dnsp-default/dom-[${each.value["domain"]}].json"
   class_name = "dnsDomain"
   payload    = <<EOF
 {
     "dnsDomain": {
         "attributes": {
-            "dn": "uni/fabric/dnsp-default/dom-[${each.value.domain}]",
-            "name": "${each.value.domain}",
-            "isDefault": "${each.value.fqdn}",
+            "dn": "uni/fabric/dnsp-default/dom-[${each.value["domain"]}]",
+            "name": "${each.value["domain"]}",
+            "isDefault": "${each.value["fqdn"]}",
         },
         "children": []
     }
@@ -53,16 +53,16 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: DNS Providers
 */
 resource "aci_rest" "dns_server" {
-  for_each   = var.merged_dns_server
-  path       = "/api/node/mo/uni/fabric/dnsp-default/prov-[${each.value.server}].json"
+  for_each   = local.dns_server
+  path       = "/api/node/mo/uni/fabric/dnsp-default/prov-[${each.value["server"]}].json"
   class_name = "dnsProv"
   payload    = <<EOF
 {
     "dnsProv": {
         "attributes": {
-            "dn": "uni/fabric/dnsp-default/prov-[${each.value.server}]",
-            "addr": "${each.value.server}",
-            "preferred": "${each.value.preferred}",
+            "dn": "uni/fabric/dnsp-default/prov-[${each.value["server"]}]",
+            "addr": "${each.value["server"]}",
+            "preferred": "${each.value["preferred"]}",
         }
         "children": []
     }

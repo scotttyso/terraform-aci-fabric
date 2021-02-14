@@ -58,8 +58,8 @@ variable "fabric_isis_metric" {
   default     = 63
   validation {
     condition = (
-      length(var.fabric_isis_metric) >= 1 &&
-      length(var.fabric_isis_metric) <= 63
+      var.fabric_isis_metric >= 1 &&
+      var.fabric_isis_metric <= 63
     )
     error_message = "ISIS Redistribution Metric Must be between 1 and 63."
   }
@@ -111,7 +111,7 @@ variable "subnet_check" {
 
 variable "disable_remote_ep_learn" {
   description = "Options are (true|false), to disable remote endpoint learning in VRFs containing external bridged/routed domains"
-  type        = string
+  type        = bool
   default     = true
   validation {
     condition     = (var.disable_remote_ep_learn == true || var.disable_remote_ep_learn == false)
@@ -151,8 +151,8 @@ variable "rouge_interval" {
   default     = 30
   validation {
     condition = (
-      length(var.rouge_interval) >= 1 &&
-      length(var.rouge_interval) <= 65535
+      var.rouge_interval >= 1 &&
+      var.rouge_interval <= 65535
     )
     error_message = "The Rouge Interval must be between 1 and 65535."
   }
@@ -164,8 +164,8 @@ variable "rouge_multiplier" {
   default     = 6
   validation {
     condition = (
-      length(var.rouge_multiplier) >= 2 &&
-      length(var.rouge_multiplier) <= 10
+      var.rouge_multiplier >= 2 &&
+      var.rouge_multiplier <= 10
     )
     error_message = "The Rouge Multiplier must be between 2 and 10."
   }
