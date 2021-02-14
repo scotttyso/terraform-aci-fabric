@@ -15,7 +15,7 @@ variable "client" {
   type        = string
   default     = "198.18.1.1"
   validation {
-    condition     = (can(regexall("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|[a-fA-F0-9:]+$", var.client)))
+    condition     = (can(regexall("^(\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$|[a-fA-F0-9:]+$)", var.client)))
     error_message = "The SNMP Client must be a valid IPv4 or IPv6 Address."
   }
 }

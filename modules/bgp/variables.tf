@@ -1,3 +1,7 @@
+terraform {
+  experiments = [module_variable_optional_attrs]
+}
+
 variable "bgp_asn" {
   description = "Assign the BGP Autonomous System Number to the System."
   type        = number
@@ -14,7 +18,7 @@ variable "bgp_asn" {
 variable "bgp_rr" {
   description = "Assign the Spines in the Fabric that should be configured as BGP Route Reflectors.  Typically this should be all spines."
   type = map(object({
-    node_id = number
+    node_id = optional(number)
   }))
   default = {
     default = {
@@ -28,4 +32,12 @@ variable "bgp_rr" {
 #    )
 #    error_message = "For the BGP Route Reflector, the Node ID Must be between 101 and 4001."
 #  }
+}
+
+locals {
+  bgp_rr = {
+    for k, v in var.bgp_rr : k => {
+      node_id = coalesce(v.node_id, 101)
+    }
+  }
 }

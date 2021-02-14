@@ -76,8 +76,8 @@ variable "smtp_port" {
   default     = 25
   validation {
     condition = (
-      length(var.smtp_port) >= 1 &&
-      length(var.smtp_port) <= 65535
+      var.smtp_port >= 1 &&
+      var.smtp_port <= 65535
     )
     error_message = "The Smart CallHome SMTP Relay Port must be between 1 and 65535."
   }

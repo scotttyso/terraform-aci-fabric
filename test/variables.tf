@@ -1,3 +1,38 @@
+variable "community1" {
+  type      = string
+  sensitive = true
+}
+
+variable "community2" {
+  type      = string
+  sensitive = true
+}
+
+variable "auth_key1" {
+  type      = string
+  sensitive = true
+}
+
+variable "auth_key2" {
+  type      = string
+  sensitive = true
+}
+
+variable "priv_key2" {
+  type      = string
+  sensitive = true
+}
+
+variable "snmp_user1" {
+  type      = string
+  sensitive = true
+}
+
+variable "snmp_user2" {
+  type      = string
+  sensitive = true
+}
+
 variable "aciUser" {
   description = "If using a Domain with the User Remember to add apic#[domain]\\<username>"
   type        = string

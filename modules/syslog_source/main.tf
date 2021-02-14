@@ -6,7 +6,6 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source
 */
 resource "aci_rest" "syslog_source" {
-  for_each   = var.syslog
   path       = "/api/node/mo/uni/fabric/moncommon/slsrc-${var.source_grp}.json"
   class_name = "syslogSrc"
   payload    = <<EOF

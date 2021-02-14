@@ -22,7 +22,7 @@ variable "Description" {
   default     = "Default Policy Created by the terraform-aci provider"
 }
 
-variable "isis_poicy" {
+variable "isis_policy" {
   type        = string
   description = "ISIS Policy Name"
   default     = "default"

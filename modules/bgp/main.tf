@@ -29,7 +29,7 @@ GUI Location:
  - System > System Settings > BGP Route Reflector: Route Reflector Nodes
 */
 resource "aci_rest" "bgp_rr" {
-  for_each   = var.bgp_rr
+  for_each   = local.bgp_rr
   path       = "/api/node/mo/uni/fabric/bgpInstP-default/rr/node-${each.value["node_id"]}.json"
   class_name = "bgpRRNodePEp"
   payload    = <<EOF
