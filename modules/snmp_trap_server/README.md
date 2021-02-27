@@ -17,27 +17,21 @@ These resources are created
 
 * [SNMP Trap Server](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
 
-SNMP Trap Forward Destination:
+Use the Class or Distinguished Name to verify in the API.
+
+**SNMP Trap Forward Destination:**
 
 * Class: "snmpTrapFwdServerP"
 * Distinguished Name: "uni/fabric/snmppol-default/trapfwdserver-[{Trap Server}]"
+* GUI Location: Fabric > Fabric Policies > Policies > Pod > SNMP > default: Trap Forward Servers
 
-SNMP Trap Destination:
+**SNMP Trap Destination:**
 
 * Class: "snmpTrapDest"
 * Distinguished Name: "uni/fabric/snmpgroup-{SNMP Destination Group}/trapdest-{SNMP Trap Server}-port-{SNMP Port}"
-
-GUI Location:
-
-SNMP Trap Forward Destination:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default: Trap Forward Servers
-
-SNMP Trap Destination:
-
-* Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers
+* GUI Location: Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

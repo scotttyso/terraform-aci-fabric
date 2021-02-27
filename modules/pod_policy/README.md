@@ -17,14 +17,13 @@ These resources are created
 
 * [Pod Policy Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "fabricPodPGrp"
 * Distinguished Name: "uni/fabric/funcprof/podpgrp-{Name}"
-
-GUI Location:
-
-* Fabric > Fabric Policies > Pods > Policy Groups: {Name}
+* GUI Location: Fabric > Fabric Policies > Pods > Policy Groups: {Name}
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

@@ -17,14 +17,13 @@ These resources are created:
 
 * [ntp](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "datetimeNtpProv"
 * Distinguished Name: "uni/fabric/time-default/ntpprov-{NTP_Server}"
-
-GUI Location:
-
-* Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers
+* GUI Location: Fabric > Fabric Policies > Policies > Pod > Date and Time > Policy default: NTP Servers
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

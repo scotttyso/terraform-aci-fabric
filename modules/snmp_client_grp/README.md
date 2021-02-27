@@ -17,16 +17,13 @@ These resources are created:
 
 * [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "snmpClientGrpP"
 * Distinguished Name: "uni/fabric/snmppol-default/clgrp-{Client Group Name}"
-
-GUI Location:
-
-SNMP Client Group:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
+* GUI Location: Fabric > Fabric Policies > Policies > Pod > SNMP > default - Client Group Policies
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

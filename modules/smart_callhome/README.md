@@ -17,27 +17,21 @@ These resources are created:
 
 * [Smart CallHome](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
 
-Smart CallHome Destination Group:
+Use the Class or Distinguished Name to verify in the API.
+
+**Smart CallHome Destination Group:**
 
 * Class: "callhomeSmartGroup"
 * Distinguished Name: "uni/fabric/smartgroup-{Smart CallHome Destination Group}"
+* GUI Location: Admin > External Data Collectors > Monitoring Destinations > Smart Callhome > [Smart CallHome Destination Group]
 
-Smart CallHome Source:
+**Smart CallHome Source:**
 
 * Class: "callhomeSmartSrc"
 * Distinguished Name: "uni/infra/moninfra-default/smartchsrc"
-
-GUI Location:
-
-Smart CallHome Destination Group:
-
-* Admin > External Data Collectors > Monitoring Destinations > Smart Callhome > [Smart CallHome Destination Group]
-
-Smart CallHome Source:
-
-* Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Smart CallHome Source
+* GUI Location: Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Smart CallHome Source
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

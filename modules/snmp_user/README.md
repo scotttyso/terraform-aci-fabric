@@ -17,14 +17,13 @@ These resources are created:
 
 * [SNMP User](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "snmpUserP"
 * Distinguished Name: "uni/fabric/snmppol-default/user-{SNMP_User}"
-
-GUI Location:
-
-* Fabric > Fabric Policies > Policies > Pod > SNMP > default: SNMP V3 Users
+* GUI Location: Fabric > Fabric Policies > Policies > Pod > SNMP > default: SNMP V3 Users
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

@@ -13,81 +13,62 @@ module "best_practices" {
 
 This module will configure the recommended Best practice settings for the ACI Fabric.
 
-These resources modified:
+## APIC Reference Information
 
-API Information:
+Use the Class or Distinguished Name to verify in the API.
 
-Fabric Settings Classes:
+## Fabric Settings
+
+**Assign the Preferred Mgmt Domain for Routing on the APICs:**
+
+* Class: "mgmtConnectivityPrefs"
+* Distinguished Name: "uni/fabric/connectivityPrefs"
+* GUI Location: System > System Settings > APIC Connectivity Preferences
+
+**Enable Strict COOP Group Policy:**
 
 * Class: "coopPol"
-* Class: "fabricNodeControl"
-* Class: "isisDomPol"
-* Class: "l3IfPol"
-
-Fabric Settings Distinguished Names:
-
-* Distinguished Name: "uni/fabric"
 * Distinguished Name: "uni/fabric/pol-default"
-* Distinguished Name: "uni/fabric/nodecontrol-default"
-* Distinguished Name: "uni/fabric/isisDomP-default"
-* Distinguished Name: "uni/fabric/l3IfP-default"
+* GUI Location: System > System Settings > COOP Group
 
-Infrastructure Settings Classes:
+**Telemetry & Enable DOM:**
+
+* Class: "fabricNodeControl"
+* Distinguished Name: "uni/fabric/nodecontrol-default"
+* GUI Location: Fabric > Policies > Monitoring > Fabric Node Controls > default
+
+**ISIS Metric for redistributed Routes:**
+
+* Class: "isisDomPol"
+* Distinguished Name: "uni/fabric/isisDomP-default"
+* GUI Location: System > System Settings > ISIS Policy
+
+**Enable BFD for Fabric-Facing Interfaces:**
+
+* Class: "l3IfPol"
+* Distinguished Name: "uni/fabric/l3IfP-default"
+* GUI Location: Fabric > Fabric Policies > Policies > L3 Interface > default > BFD ISIS Policy
+
+## Infrastructure Settings
+
+**Fabric Wide Settings:**
 
 * Class: "infraSetPol"
-* Class: "epLoopProtectP"
-* Class: "epControlP"
-* Class: "epIpAgingP"
-* Class: "infraPortTrackPol"
-* Class: "mcpInstPol"
-* Class: "qosInstPol"
-
-Infrastructure Settings Distinguished Names:
-
 * Distinguished Name: "uni/infra/settings"
-* Distinguished Name: "uni/infra/epLoopProtectP-default"
-* Distinguished Name: "uni/infra/epCtrlP-default"
-* Distinguished Name: "uni/infra/ipAgingP-default"
-* Distinguished Name: "uni/infra/trackEqptFabP-default"
-* Distinguished Name: "uni/infra/mcpInstP-default"
-* Distinguished Name: "uni/infra/qosinst-default"
-
-GUI Location:
-
-Fabric Settings:
-
-Assign the Preferred Mgmt Domain for Routing on the APICs:
-
-* System > System Settings > APIC Connectivity Preferences
-
-Enable Strict COOP Group Policy:
-
-* System > System Settings > COOP Group
-
-Telemetry & Enable DOM:
-
-* Fabric > Policies > Monitoring > Fabric Node Controls > default
-
-ISIS Metric for redistributed Routes - 63:
-
-* System > System Settings > ISIS Policy
-
-Enable BFD for Fabric-Facing Interfaces:
-
-* Fabric > Fabric Policies > Policies > L3 Interface > default > BFD ISIS Policy
-
-Infrastructure Settings:
-
-Fabric Wide Settings
-
-* System > System Settings > Fabric Wide Settings
+* GUI Location: System > System Settings > Fabric Wide Settings
   Disable Remote EP Learning
   Enforce Subnet Check
   Turn on Domain Validation
 
-Endpoint Controls
+**Endpoint Controls:**
 
-* System > System Settings > Endpoint Controls
+* Class: "epLoopProtectP"
+* Class: "epControlP"
+* Class: "epIpAgingP"
+* Distinguished Name: "uni/infra/epLoopProtectP-default"
+* Distinguished Name: "uni/infra/epCtrlP-default"
+* Distinguished Name: "uni/infra/ipAgingP-default"
+* GUI Location: System > System Settings > Endpoint Controls
   Endpoint Loop Protection - Enabled - recommended
   Rouge Endpoint Control - Enabled - recommended
   * Interval 30 seconds - recommended
@@ -95,17 +76,23 @@ Endpoint Controls
   * action - no actions is the default recommendation
   IP Aging - Enabled
 
-Infrastructure Port Tracking - Enabled:
+**Infrastructure Port Tracking - Enabled:**
 
-* System > System Settings > Port Tracking
+* Class: "infraPortTrackPol"
+* Distinguished Name: "uni/infra/trackEqptFabP-default"
+* GUI Location: System > System Settings > Port Tracking
 
-Mis-Cabling Protocol per-vlan Tracking:
+**Mis-Cabling Protocol per-vlan Tracking:**
 
-* Fabric > Access Policies > Global Policies > MCP Instance Policy default.
+* Class: "mcpInstPol"
+* Distinguished Name: "uni/infra/mcpInstP-default"
+* GUI Location: Fabric > Access Policies > Global Policies > MCP Instance Policy default.
 
-Preserve COS through the ACI Fabric:
+**Preserve COS through the ACI Fabric:**
 
-* Fabric > Access Policies > Policies > Global > QOS Class > Preserve COS
+* Class: "qosInstPol"
+* Distinguished Name: "uni/infra/qosinst-default"
+* GUI Location: Fabric > Access Policies > Policies > Global > QOS Class > Preserve COS
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

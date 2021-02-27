@@ -18,27 +18,21 @@ These resources are created:
 * [BGP ASN](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 * [BGP Route Reflectors](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
 
-BGP Autonomous System Number:
+Use the Class or Distinguished Name to verify in the API.
+
+**BGP Autonomous System Number:**
 
 * Class: "bgpAsP"
 * Distinguished Name: "uni/fabric/bgpInstP-default"
+* GUI Location: System > System Settings > BGP Route Reflector: Autonomous System Number
 
-BGP Route Reflectors:
+**BGP Route Reflectors:**
 
 * Class: "bgpRRNodePEp"
 * Distinguished Name: "uni/fabric/bgpInstP-default/rr/node-{Node ID}"
-
-GUI Location:
-
-BGP Autonomous System Number:
-
-* System > System Settings > BGP Route Reflector: Autonomous System Number
-
-BGP Route Reflectors:
-
-* System > System Settings > BGP Route Reflector: Route Reflector Nodes
+* GUI Location: System > System Settings > BGP Route Reflector: Route Reflector Nodes
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

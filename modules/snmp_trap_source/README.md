@@ -17,16 +17,13 @@ These resources are created
 
 * [SNMP Trap Source](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "snmpSrc"
 * Distinguished Name: "uni/fabric/moncommon/snmpsrc-{Source Name}"
-
-GUI Location:
-
-SNMP Source:
-
-* Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP
+* GUI Location: Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

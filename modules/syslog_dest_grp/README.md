@@ -17,14 +17,16 @@ These resources are created:
 
 * [Syslog Destination Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "syslogGroup"
 * Distinguished Name: "uni/fabric/slgroup-{Destination Group Name}"
 
 GUI Location:
 
-* Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}
+* GUI Location: Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements

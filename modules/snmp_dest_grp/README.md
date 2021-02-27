@@ -17,16 +17,13 @@ These resources are created
 
 * [SNMP Destination Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
 
-API Information:
+## APIC Reference Information
+
+Use the Class or Distinguished Name to verify in the API.
 
 * Class: "snmpGroup"
 * Distinguished Name: "uni/fabric/snmpgroup-{SNMP Trap Destination Group}"
-
-GUI Location:
-
-SNMP Destination Group:
-
-* Admin > External Data Collectors > Monitoring Destinations > SNMP > {SNMP Trap Destination Group}
+* GUI Location: Admin > External Data Collectors > Monitoring Destinations > SNMP > {SNMP Trap Destination Group}
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
