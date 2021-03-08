@@ -13,11 +13,6 @@ module "bgp" {
 
 This module will Configure the BGP ASN and add the Route Reflectors for the ACI Fabric.
 
-These resources are created:
-
-* [BGP ASN](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-* [BGP Route Reflectors](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

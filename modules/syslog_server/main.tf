@@ -10,26 +10,26 @@ resource "aci_rest" "syslog_server" {
   class_name = "syslogRemoteDest"
   payload    = <<EOF
 {
-	"syslogRemoteDest": {
-		"attributes": {
-			"dn": "uni/fabric/slgroup-default/rdst-${var.syslog_server}",
-			"host": "${var.syslog_server}",
-			"name": "${var.syslog_name}",
-			"forwardingFacility": "${var.facility}",
-			"port": "${var.syslog_port}",
-			"severity": "${var.syslog_severity}",
-		},
-		"children": [
-			{
-				"fileRsARemoteHostToEpg": {
-					"attributes": {
-						"tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
-					},
-					"children": []
-				}
-			}
-		]
-	}
+  "syslogRemoteDest": {
+    "attributes": {
+      "dn": "uni/fabric/slgroup-default/rdst-${var.syslog_server}",
+      "host": "${var.syslog_server}",
+      "name": "${var.syslog_name}",
+      "forwardingFacility": "${var.facility}",
+      "port": "${var.syslog_port}",
+      "severity": "${var.syslog_severity}",
+    },
+    "children": [
+      {
+        "fileRsARemoteHostToEpg": {
+          "attributes": {
+            "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
 }
-	EOF
+  EOF
 }

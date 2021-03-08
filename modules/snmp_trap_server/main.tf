@@ -10,16 +10,16 @@ resource "aci_rest" "snmp_trap_server" {
   class_name = "snmpTrapFwdServerP"
   payload    = <<EOF
 {
-    "snmpTrapFwdServerP": {
-        "attributes": {
-            "dn": "uni/fabric/snmppol-default/trapfwdserver-[${var.snmp_server}]",
-            "addr": "${var.snmp_server}",
-            "port": "${var.snmp_port}"
-        },
-        "children": []
-    }
+  "snmpTrapFwdServerP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/trapfwdserver-[${var.snmp_server}]",
+      "addr": "${var.snmp_server}",
+      "port": "${var.snmp_port}"
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }
 
 /*
@@ -34,25 +34,25 @@ resource "aci_rest" "snmp_trap_destination" {
   class_name = "snmpGroup"
   payload    = <<EOF
 {
-	"snmpTrapDest": {
-		"attributes": {
-			"dn": "uni/fabric/snmpgroup-${var.dest_group}/trapdest-${var.snmp_server}-port-${var.snmp_port}",
-			"host": "${var.snmp_server}",
-			"port": "${var.snmp_port}",
-			"secName": "${var.snmp_string}",
-			"v3SecLvl": "${var.security_level}",
-			"ver": "${var.snmp_version}"
-		},
-		"children": [
-			{
-				"fileRsARemoteHostToEpg": {
-					"attributes": {
-						"tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
-					}
-				}
-			}
-		]
-	}
+  "snmpTrapDest": {
+    "attributes": {
+      "dn": "uni/fabric/snmpgroup-${var.dest_group}/trapdest-${var.snmp_server}-port-${var.snmp_port}",
+      "host": "${var.snmp_server}",
+      "port": "${var.snmp_port}",
+      "secName": "${var.snmp_string}",
+      "v3SecLvl": "${var.security_level}",
+      "ver": "${var.snmp_version}"
+    },
+    "children": [
+      {
+        "fileRsARemoteHostToEpg": {
+          "attributes": {
+            "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
+          }
+        }
+      }
+    ]
+  }
 }
-	EOF
+  EOF
 }

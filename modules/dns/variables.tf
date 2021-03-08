@@ -3,15 +3,22 @@ terraform {
 }
 
 variable "dns_domain" {
-  description = "Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the FQDN.  Assign no to the rest."
+  description = "Assigned FQDN and Search Domains.  Assign yes to the fqdn variable only to the domain that will be used for the FQDN.  Assign no to the rest."
   type = map(object({
-    domain = optional(string)
-    fqdn   = optional(string)
+    annotation  = optional(string)
+    description = optional(string)
+    domain      = optional(string)
+    fqdn        = optional(string)
+    name_alias  = optional(string)
+
   }))
   default = {
     default = {
-      domain = "example.com"
-      fqdn   = "no"
+      annotation  = ""
+      description = ""
+      domain      = "example.com"
+      fqdn        = "no"
+      name_alias  = ""
     }
   }
 #  validation {
@@ -23,32 +30,20 @@ variable "dns_domain" {
 #  }
 }
 
-variable "dns_mgmt" {
-  description = "Options are 'inb' or 'oob'.  Define the Management Domain to reach the DNS Server(s)."
-  type        = string
-  default     = "oob"
-  validation {
-    condition     = (var.dns_mgmt == "inb" || var.dns_mgmt == "oob")
-    error_message = "The DNS Management Domain must be 'inb' or 'oob'."
-  }
-}
-
-variable "dns_epg" {
-  description = "What EPG in the Management Domain should be used to reach the DNS Server(s)."
-  type        = string
-  default     = "default"
-}
-
 variable "dns_server" {
   description = "Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'."
   type = map(object({
-    preferred = optional(bool)
-    server    = optional(string)
+    annotation  = optional(string)
+    preferred   = optional(bool)
+    server      = optional(string)
+    name_alias  = optional(string)
   }))
   default = {
     default = {
+      annotation  = ""
       preferred = false
       server    = "198.18.1.1"
+      name_alias  = ""
     }
   }
 #  validation {
@@ -60,17 +55,28 @@ variable "dns_server" {
 #  }
 }
 
+variable "mgmt_domain_dn" {
+  description = "The Distinguished Name for the Management Domain.\n Example: \"uni/tn-mgmt/mgmtp-default/oob-default\""
+  type        = string
+  default     = "uni/tn-mgmt/mgmtp-default/oob-default"
+}
+
 locals {
   dns_domain = {
     for k, v in var.dns_domain : k => {
+      annotation  = (v.annotation != null ? v.annotation : "")
+      description = (v.description != null ? v.description : "")
       domain = coalesce(v.domain, "example.com")
       fqdn = coalesce(v.fqdn, "no")
+      name_alias  = (v.name_alias != null ? v.name_alias : "")
     }
   }
   dns_server = {
     for k, v in var.dns_server : k => {
+      annotation  = (v.annotation != null ? v.annotation : "")
       preferred = coalesce(v.preferred, false)
       server = coalesce(v.server, "198.18.1.1")
+      name_alias  = (v.name_alias != null ? v.name_alias : "")
     }
   }
 }

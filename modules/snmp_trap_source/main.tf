@@ -12,23 +12,23 @@ resource "aci_rest" "snmp_trap_source" {
   class_name = "snmpSrc"
   payload    = <<EOF
 {
-	"snmpSrc": {
-		"attributes": {
-			"dn": "uni/fabric/moncommon/snmpsrc-${var.snmp_source}",
-			"incl": "${var.snmp_messages}",
-			"name": "${var.snmp_source}",
-		},
-		"children": [
-			{
-				"snmpRsDestGroup": {
-					"attributes": {
-						"tDn": "uni/fabric/snmpgroup-${var.dest_group}",
-					},
-					"children": []
-				}
-			}
-		]
-	}
+  "snmpSrc": {
+    "attributes": {
+      "dn": "uni/fabric/moncommon/snmpsrc-${var.snmp_source}",
+      "incl": "${var.snmp_messages}",
+      "name": "${var.snmp_source}",
+    },
+    "children": [
+      {
+        "snmpRsDestGroup": {
+          "attributes": {
+            "tDn": "uni/fabric/snmpgroup-${var.dest_group}",
+          },
+          "children": []
+        }
+      }
+    ]
+  }
 }
-	EOF
+  EOF
 }

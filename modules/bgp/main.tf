@@ -10,15 +10,15 @@ resource "aci_rest" "bgp_asn" {
   class_name = "bgpAsP"
   payload    = <<EOF
 {
-    "bgpAsP": {
-        "attributes": {
-            "dn": "uni/fabric/bgpInstP-default/as",
-            "asn": "${var.bgp_asn}",
-        },
-        "children": []
-    }
+  "bgpAsP": {
+    "attributes": {
+      "dn": "uni/fabric/bgpInstP-default/as",
+      "asn": "${var.bgp_asn}",
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }
 
 /*
@@ -34,13 +34,13 @@ resource "aci_rest" "bgp_rr" {
   class_name = "bgpRRNodePEp"
   payload    = <<EOF
 {
-    "bgpRRNodePEp": {
-        "attributes": {
-            "dn": "uni/fabric/bgpInstP-default/rr/node-${each.value["node_id"]}",
-            "id": "${each.value["node_id"]}",
-        },
-        "children": []
-    }
+  "bgpRRNodePEp": {
+    "attributes": {
+      "dn": "uni/fabric/bgpInstP-default/rr/node-${each.value["node_id"]}",
+      "id": "${each.value["node_id"]}",
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

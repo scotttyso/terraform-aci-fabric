@@ -10,14 +10,14 @@ resource "aci_rest" "snmp_trap_destination_group" {
   class_name = "snmpGroup"
   payload    = <<EOF
 {
-    "snmpGroup": {
-        "attributes": {
-            "dn": "uni/fabric/snmpgroup-${var.dest_group}",
-            "descr": "${var.description}",
-            "name": "${var.dest_group}"
-        },
-        "children": []
-    }
+  "snmpGroup": {
+    "attributes": {
+      "dn": "uni/fabric/snmpgroup-${var.dest_group}",
+      "descr": "${var.description}",
+      "name": "${var.dest_group}"
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

@@ -1,11 +1,6 @@
-variable "community1" {
-  type      = string
-  sensitive = true
-}
-
-variable "community2" {
-  type      = string
-  sensitive = true
+variable "oob_mgmt_domain" {
+  type    = string
+  default = "uni/tn-mgmt/mgmtp-default/oob-default"
 }
 
 variable "auth_key1" {
@@ -14,6 +9,16 @@ variable "auth_key1" {
 }
 
 variable "auth_key2" {
+  type      = string
+  sensitive = true
+}
+
+variable "community1" {
+  type      = string
+  sensitive = true
+}
+
+variable "community2" {
   type      = string
   sensitive = true
 }
@@ -47,5 +52,5 @@ variable "aciPass" {
 variable "aciUrl" {
   description = "This can be the IP or Hostname of the ACI Host you will be configuring"
   type        = string
-  default     = "https://brahma-apic2.rich.ciscolabs.com"
+  default     = "https://brahma-apic1.rich.ciscolabs.com"
 }

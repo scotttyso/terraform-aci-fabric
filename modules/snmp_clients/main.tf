@@ -10,14 +10,14 @@ resource "aci_rest" "snmp_client" {
   class_name = "snmpClientP"
   payload    = <<EOF
 {
-    "snmpClientP": {
-        "attributes": {
-            "dn": "uni/fabric/snmppol-default/clgrp-${var.client_group}/client-[${var.client}]",
-            "name": "${var.name}",
-            "addr": "${var.client}",
-        },
-        "children": []
-    }
+  "snmpClientP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/clgrp-${var.client_group}/client-[${var.client}]",
+      "name": "${var.name}",
+      "addr": "${var.client}",
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

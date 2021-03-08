@@ -10,25 +10,25 @@ resource "aci_rest" "snmp_client_group" {
   class_name = "snmpClientGrpP"
   payload    = <<EOF
 {
-	"snmpClientGrpP": {
-		"attributes": {
-			"dn": "uni/fabric/snmppol-default/clgrp-${var.client_group}",
-			"name": "${var.client_group}",
-			"descr": "SNMP Clients allowed on Mgmt ${var.mgmt} EPG ${var.epg}",
-			"status": "created"
-		},
-		"children": [
-			{
-				"snmpRsEpg": {
-					"attributes": {
-						"tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}",
-						"status": "created"
-					},
-					"children": []
-				}
-			}
-		]
-	}
+  "snmpClientGrpP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/clgrp-${var.client_group}",
+      "name": "${var.client_group}",
+      "descr": "SNMP Clients allowed on Mgmt ${var.mgmt} EPG ${var.epg}",
+      "status": "created"
+    },
+    "children": [
+      {
+        "snmpRsEpg": {
+          "attributes": {
+            "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}",
+            "status": "created"
+          },
+          "children": []
+        }
+      }
+    ]
+  }
 }
-	EOF
+  EOF
 }

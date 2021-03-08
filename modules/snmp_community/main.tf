@@ -10,14 +10,14 @@ resource "aci_rest" "snmp_community" {
   class_name = "snmpCommunityP"
   payload    = <<EOF
 {
-    "snmpCommunityP": {
-        "attributes": {
-            "dn": "uni/fabric/snmppol-default/community-${var.community}",
-            "descr": "${var.description}",
-            "name": "${var.community}"
-        },
-        "children": []
-    }
+  "snmpCommunityP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/community-${var.community}",
+      "descr": "${var.description}",
+      "name": "${var.community}"
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

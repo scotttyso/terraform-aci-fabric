@@ -11,16 +11,19 @@ resource "aci_rest" "dns_domain" {
   class_name = "dnsDomain"
   payload    = <<EOF
 {
-    "dnsDomain": {
-        "attributes": {
-            "dn": "uni/fabric/dnsp-default/dom-[${each.value["domain"]}]",
-            "name": "${each.value["domain"]}",
-            "isDefault": "${each.value["fqdn"]}",
-        },
-        "children": []
-    }
+  "dnsDomain": {
+    "attributes": {
+      "annotation": "${each.value["annotation"]}",
+      "descr": "${each.value["description"]}",
+      "dn": "uni/fabric/dnsp-default/dom-[${each.value["domain"]}]",
+      "isDefault": "${each.value["fqdn"]}",
+      "name": "${each.value["domain"]}",
+      "nameAlias": "${each.value["name_alias"]}",
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }
 
 /*
@@ -35,14 +38,14 @@ resource "aci_rest" "DNS_Mgmt_Domain" {
   class_name = "dnsRsProfileToEpg"
   payload    = <<EOF
 {
-    "dnsRsProfileToEpg": {
-        "attributes": {
-            "tDn": "uni/tn-mgmt/mgmtp-default/${var.dns_mgmt}-${var.dns_epg}"
-        },
-        "children": []
-    }
+  "dnsRsProfileToEpg": {
+    "attributes": {
+      "tDn": "${var.mgmt_domain_dn}"
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }
 
 /*
@@ -58,14 +61,16 @@ resource "aci_rest" "dns_server" {
   class_name = "dnsProv"
   payload    = <<EOF
 {
-    "dnsProv": {
-        "attributes": {
-            "dn": "uni/fabric/dnsp-default/prov-[${each.value["server"]}]",
-            "addr": "${each.value["server"]}",
-            "preferred": "${each.value["preferred"]}",
-        }
-        "children": []
+  "dnsProv": {
+    "attributes": {
+      "annotation": "${each.value["annotation"]}",
+      "dn": "uni/fabric/dnsp-default/prov-[${each.value["server"]}]",
+      "addr": "${each.value["server"]}",
+      "nameAlias": "${each.value["name_alias"]}",
+      "preferred": "${each.value["preferred"]}",
     }
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

@@ -18,16 +18,18 @@ module "fabric_bgp" {
 
 module "fabric_dns" {
   source  = "../modules/dns"
-  # The default "oob" mgmt Domain is being used here so there is no need for: 
+  # The default "oob" mgmt Domain is being used here so there is no need for:
   # dns_mgmt  = "oob"
   dns_domain = {
     "dmz_domain" = {
-      domain = "dmz.example.com"
+      description = "This is a DNS Domain for the DMZ zone."
+      domain      = "dmz.example.com"
       # The default setting for fqdn is "no", I can accept that without adding it here
     },
     "prod_domain" = {
-      domain = "prod.example.com"
-      fqdn   = "yes"
+      description = "This is the default DNS Domain."
+      domain      = "prod.example.com"
+      fqdn        = "yes"
     }
   }
   dns_server = {
@@ -42,22 +44,20 @@ module "fabric_dns" {
   }
 }
 
-module "fabric_ntp" {
-  source  = "../modules/ntp"
-  # The default "oob" mgmt Domain is being used here so there is no need for: 
-  # dns_mgmt  = "oob"
-  ntp = {
-    "ntp_server1" = {
-      # The default setting for epg is "default", I can accept that without adding it here
-      # The default setting for mgmt is "oob", I can accept that without adding it here
-      preferred = true
-      # The default server is 198.18.1.1 so I am accepting it here.
-    },
-    "ntp_server2" = {
-      # The default setting for preferred is "false", I can accept that without adding it here
-      ntp_server = "198.18.1.2"
-    }
-  }
+module "fabric_ntp_server1" {
+  source          = "../modules/ntp"
+  description     = "1st NTP Server"
+  mgmt_domain_dn  = var.oob_mgmt_domain
+  # name            = "198.18.1.1"  # The default server is 198.18.1.1 so I am accepting it here.
+  preferred       = "yes"
+}
+
+module "fabric_ntp_server2" {
+  source          = "../modules/ntp"
+  description     = "2nd NTP Server"
+  mgmt_domain_dn  = var.oob_mgmt_domain
+  name            = "198.18.1.2"
+  # preferred       = "no"  # As no is the default I don't have to define here.
 }
 
 module "fabric_pod_policy" {

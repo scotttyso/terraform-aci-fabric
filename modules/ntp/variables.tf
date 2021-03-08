@@ -1,23 +1,25 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
+variable "annotation" {
+  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
+  type        = string
+  default     = ""
 }
 
-variable "ntp" {
-  description = "Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true)."
-  type = map(object({
-    epg        = optional(string)
-    mgmt       = optional(string)
-    ntp_server = optional(string)
-    preferred  = optional(bool)
-  }))
-  default = {
-    default = {
-      epg        = "default"
-      mgmt       = "oob"
-      ntp_server = "198.18.1.1"
-      preferred  = false
-    }
-  }
+variable "description" {
+  description = "The Description for the NTP Server."
+  type        = string
+  default     = ""
+}
+
+variable "mgmt_domain_dn" {
+  description = "The Distinguished Name for the Management Domain.\n Example: \"uni/tn-mgmt/mgmtp-default/oob-default\""
+  type        = string
+  default     = "uni/tn-mgmt/mgmtp-default/oob-default"
+}
+
+variable "name" {
+  description = "Hostname or IPv4/IPv6 address of the NTP Server."
+  type        = string
+  default     = "198.18.1.1"
 #  validation {
 #    condition = (
 #      var.ntp_default.preferred == true || var.ntp_default.preferred == false &&
@@ -28,13 +30,19 @@ variable "ntp" {
 #  }
 }
 
-locals {
-  ntp = {
-    for k, v in var.ntp : k => {
-      epg = coalesce(v.epg, "default")
-      mgmt = coalesce(v.mgmt, "oob")
-      ntp_server = coalesce(v.ntp_server, "198.18.1.1")
-      preferred = coalesce(v.preferred, false)
-    }
+variable "name_alias" {
+  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+  type        = string
+  default     = ""
+}
+
+variable "preferred" {
+  description = "Indicates if the NTP server is preferred. Multiple preferred servers can be configured. The NTP server preference states include the following:\n  * no — The NTP server is not preferred.\n  * yes — The NTP server is preferred\nThe default is no."
+  type        = string
+  default     = "no"
+  validation {
+    condition     = (var.preferred == "yes" || var.preferred == "no")
+    error_message = "Options for NTP preferred are yes or no."
   }
 }
+

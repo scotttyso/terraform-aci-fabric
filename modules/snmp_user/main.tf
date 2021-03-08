@@ -10,17 +10,17 @@ resource "aci_rest" "snmp_users" {
   class_name = "snmpUserP"
   payload    = <<EOF
 {
-    "snmpUserP": {
-        "attributes": {
-            "dn": "uni/fabric/snmppol-default/user-${var.snmp_user}",
-            "name": "${var.snmp_user}",
-            "privType": "${var.priv_type}",
-            "privKey": "${var.priv_key}",
-            "authType": "${var.auth_type}",
-            "authKey": "${var.auth_key}"
-        },
-        "children": []
-    }
+  "snmpUserP": {
+    "attributes": {
+      "dn": "uni/fabric/snmppol-default/user-${var.snmp_user}",
+      "name": "${var.snmp_user}",
+      "privType": "${var.priv_type}",
+      "privKey": "${var.priv_key}",
+      "authType": "${var.auth_type}",
+      "authKey": "${var.auth_key}"
+    },
+    "children": []
+  }
 }
-	EOF
+  EOF
 }

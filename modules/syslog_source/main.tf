@@ -10,24 +10,24 @@ resource "aci_rest" "syslog_source" {
   class_name = "syslogSrc"
   payload    = <<EOF
 {
-	"syslogSrc": {
-		"attributes": {
-			"dn": "uni/fabric/moncommon/slsrc-${var.source_grp}",
-			"name": "${var.source_grp}",
-			"incl": "${var.incl_types}",
-            "minSev": "${var.min_level}",
-		},
-		"children": [
-			{
-				"syslogRsDestGroup": {
-					"attributes": {
-						"tDn": "uni/fabric/slgroup-${var.dest_group}",
-					},
-					"children": []
-				}
-			}
-		]
-	}
+  "syslogSrc": {
+    "attributes": {
+      "dn": "uni/fabric/moncommon/slsrc-${var.source_grp}",
+      "incl": "${var.incl_types}",
+      "name": "${var.source_grp}",
+      "minSev": "${var.min_level}",
+    },
+    "children": [
+      {
+        "syslogRsDestGroup": {
+          "attributes": {
+            "tDn": "uni/fabric/slgroup-${var.dest_group}",
+          },
+          "children": []
+        }
+      }
+    ]
+  }
 }
-	EOF
+  EOF
 }
