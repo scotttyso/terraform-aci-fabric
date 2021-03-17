@@ -25,13 +25,13 @@ variable "bgp_rr" {
       node_id = 101
     }
   }
-#  validation {
-#    condition = (
-#      var.bgp_rr["node_id"] >= 101 &&
-#      var.bgp_rr["node_id"] <= 4001
-#    )
-#    error_message = "For the BGP Route Reflector, the Node ID Must be between 101 and 4001."
-#  }
+  #  validation {
+  #    condition = (
+  #      var.bgp_rr["node_id"] >= 101 &&
+  #      var.bgp_rr["node_id"] <= 4001
+  #    )
+  #    error_message = "For the BGP Route Reflector, the Node ID Must be between 101 and 4001."
+  #  }
 }
 
 locals {

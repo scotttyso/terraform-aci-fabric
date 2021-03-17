@@ -5,44 +5,44 @@ variable "annotation" {
 }
 
 variable "bgp_policy" {
-  type        = string
   description = "BGP Route Reflector Policy Name"
+  type        = string
   default     = "default"
 }
 
 variable "coop_policy" {
-  type        = string
   description = "COOP Group Policy Name"
+  type        = string
   default     = "default"
 }
 
 variable "date_time" {
-  type        = string
   description = "Date and Time Policy Name"
+  type        = string
   default     = "default"
 }
 
 variable "description" {
-  type        = string
   description = "Description for the Pod Policy Group"
+  type        = string
   default     = "Default Policy Created by the terraform-aci provider"
 }
 
 variable "isis_policy" {
-  type        = string
   description = "ISIS Policy Name"
+  type        = string
   default     = "default"
 }
 
 variable "macsec_policy" {
-  type        = string
   description = "MACsec Policy Name"
+  type        = string
   default     = "default"
 }
 
 variable "mgmt_policy" {
-  type        = string
   description = "Management Access Policy Name"
+  type        = string
   default     = "default"
 }
 
@@ -52,14 +52,14 @@ variable "name_alias" {
   default     = ""
 }
 
-variable "pod_pgrp" {
-  type        = string
+variable "ppg_name" {
   description = "Pod Policy Group Name.  This will be used to assign the following policies to the switches."
+  type        = string
   default     = "default"
 }
 
 variable "snmp_policy" {
-  type        = string
   description = "SNMP Policy Name"
+  type        = string
   default     = "default"
 }

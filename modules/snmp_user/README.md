@@ -53,10 +53,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | auth\_key | Authentication Key.  A string between 8 and 32 Characters.  This is a Sensitive Parameter. | `string` | n/a | yes |
-| auth\_type | Authentication Type.  Options are [hmac-sha1-96\|None]<br> - For None leave Blank.<br> - None is the option for md5 based authentication. | `string` | `""` | no |
+| auth\_type | Authentication Type.  Options are [hmac-sha1-96\|None\|hmac-md5-96]<br> - For ACI 4.x and below with md5 leave Blank.<br> - For ACI 5.x do 'hmac-md5-96', which is the default option for md5 based authentication. | `string` | `"hmac-md5-96"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | priv\_key | Privacy Key.  A string between 8 and 32 Characters.  Optional if not doing Privacy Authentication.  This is a Sensitive Parameter. | `string` | `""` | no |
-| priv\_type | Options are (des\|None\|aes-128)<br> - For None leave Blank. | `string` | `""` | no |
+| priv\_type | Options are (des\|None\|aes-128)<br> - For None leave Blank with ACI 4.x.  With ACI 5.x do des which is the default. | `string` | `"des"` | no |
 | snmp\_user | SNMP User Name. | `string` | n/a | yes |
 
 ## Outputs

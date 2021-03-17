@@ -53,9 +53,11 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | client | IPv4 or IPv6 Address of the SNMP Client | `string` | `"198.18.1.1"` | no |
-| client\_group | SNMP Client Group Name | `string` | `"default_oob"` | no |
+| client\_group\_dn | SNMP Client Group Name | `string` | n/a | yes |
 | name | Descriptive Name for the SNMP Client | `string` | `"server1"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 
 ## Outputs
 

@@ -12,20 +12,27 @@ resource "aci_rest" "SmartCallHome_destGrp" {
 {
   "callhomeSmartGroup": {
     "attributes": {
+      "annotation": "${var.annotation_callhome}",
+      "descr": "${var.description}",
       "dn": "uni/fabric/smartgroup-${var.dest_group_name}",
       "name": "${var.dest_group_name}",
+      "nameAlias": "${var.name_alias_callhome}"
     },
     "children": [
       {
         "callhomeProf": {
           "attributes": {
             "addr": "${var.street_addr}",
+            "adminState": "${var.admin_state}",
+            "annotation": "${var.annotation_profile}",
             "contact": "${var.contact_info}",
             "contract": "${var.contract_id}",
             "customer": "${var.customer_id}",
+            "descr": "${var.description}",
             "dn": "uni/fabric/smartgroup-${var.dest_group_name}/prof",
             "email": "${var.email_to}",
             "from": "${var.email_from}",
+            "nameAlias": "${var.name_alias_profile}",
             "phone": "${var.phone_number}",
             "port": "${var.smtp_port}",
             "replyTo": "${var.email_reply}",
@@ -56,41 +63,10 @@ resource "aci_rest" "SmartCallHome_destGrp" {
       {
         "callhomeSmartDest": {
           "attributes": {
-            "dn": "uni/fabric/smartgroup-${var.dest_group}/smartdest-${var.receiver}",
+            "dn": "uni/fabric/smartgroup-${var.dest_group_name}/smartdest-${var.receiver}",
             "name": "${var.receiver}",
-            "email": "${var.reply_email}",
+            "email": "${var.email_reply}",
             "format": "short-txt"
-          },
-          "children": []
-        }
-      }
-    ]
-  }
-}
-  EOF
-}
-
-/*
-API Information:
- - Class: "callhomeSmartSrc"
- - Distinguished Name: "uni/infra/moninfra-default/smartchsrc"
-GUI Location:
- - Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Smart CallHome Source
-*/
-resource "aci_rest" "SmartCallHome_Src" {
-  path       = "/api/node/mo/uni/infra/moninfra-default/smartchsrc.json"
-  class_name = "callhomeSmartSrc"
-  payload    = <<EOF
-{
-  "callhomeSmartSrc": {
-    "attributes": {
-      "dn": "uni/infra/moninfra-default/smartchsrc",
-    },
-    "children": [
-      {
-        "callhomeRsSmartdestGroup": {
-          "attributes": {
-            "tDn": "uni/fabric/smartgroup-${var.dest_group}"
           },
           "children": []
         }

@@ -57,7 +57,7 @@ resource "aci_rest" "fabric_best_practice" {
             "dn": "uni/fabric/nodecontrol-default",
             "control": "${var.fabric_node_dom}",
             "descr": "${var.fabric_dom_descr}",
-            "featureSet": "${var.fabric_node_feature}"
+            "featureSel": "${var.fabric_node_feature}"
           },
           "children": []
         }

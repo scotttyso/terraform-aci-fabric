@@ -63,13 +63,12 @@ resource "aci_rest" "dns_server" {
 {
   "dnsProv": {
     "attributes": {
+      "addr": "${each.value["server"]}",
       "annotation": "${each.value["annotation"]}",
       "dn": "uni/fabric/dnsp-default/prov-[${each.value["server"]}]",
-      "addr": "${each.value["server"]}",
       "nameAlias": "${each.value["name_alias"]}",
-      "preferred": "${each.value["preferred"]}",
+      "preferred": "${each.value["preferred"]}"
     }
-    "children": []
   }
 }
   EOF

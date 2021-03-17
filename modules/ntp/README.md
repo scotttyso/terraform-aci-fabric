@@ -53,8 +53,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| ntp | Top Level ntp variable to work around default variable merger... The real Variable holder is 'ntp\_default'. | `string` | `""` | no |
-| ntp\_default | Deploy NTP Servers for Time and Date Policies. Only one server can be preferred (true). | <pre>object({<br>    epg        = string<br>    mgmt       = string<br>    ntp_server = string<br>    preferred  = bool<br>  })</pre> | <pre>{<br>  "epg": "default",<br>  "mgmt": "oob",<br>  "ntp_server": "198.18.1.1",<br>  "preferred": false<br>}</pre> | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
+| description | The Description for the NTP Server. | `string` | `""` | no |
+| mgmt\_domain\_dn | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
+| name | Hostname or IPv4/IPv6 address of the NTP Server. | `string` | `"198.18.1.1"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| preferred | Indicates if the NTP server is preferred. Multiple preferred servers can be configured. The NTP server preference states include the following:<br>  * no — The NTP server is not preferred.<br>  * yes — The NTP server is preferred<br>The default is no. | `string` | `"no"` | no |
 
 ## Outputs
 

@@ -55,10 +55,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dest\_group | Syslog Destination Group Name.  This should have already been created by the 'syslog\_dest\_grp' module | `string` | `"default_oob"` | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
+| dest\_group\_dn | Syslog Destination Group Distinguished Name.  This should have already been created by the 'syslog\_dest\_grp' module | `string` | n/a | yes |
 | incl\_types | Options are (None\|all\|audit\|events\|faults\|session).  Default is faults.  We recommend 'alerts,faults,events,session' or 'all', same result. | `string` | `"alerts,faults,events,session"` | no |
 | min\_level | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Default is warnings.  Best practice is information. | `string` | `"information"` | no |
-| source\_grp | Syslog Source Group Name.  Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source. | `string` | `"default_oob"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| source\_group | Syslog Source Group Name.  Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source. | `string` | `"default"` | no |
 
 ## Outputs
 

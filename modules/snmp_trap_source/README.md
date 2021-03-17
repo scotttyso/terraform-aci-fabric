@@ -53,9 +53,11 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dest\_group | SNMP Trap Destination Group Name.  This should have already been created by the 'snmp\_dest\_grp' module | `string` | `"default_oob"` | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
+| dest\_group\_dn | SNMP Trap Destination Group Distinguished Name.  This should have already been created by the 'snmp\_dest\_grp' module | `string` | n/a | yes |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | snmp\_messages | Options are [none\|all\|audit\|events\|faults\|session].  Best Practice; recommendation, 'audit,events,faults'.  APIC default is 'all'.  Which Message Types to include with the SNMP Source. | `string` | `"audit,events,faults"` | no |
-| snmp\_source | Create a SNMP Source under Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP | `string` | `"default_oob"` | no |
+| snmp\_source\_name | Create a SNMP Source under Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP | `string` | `"default_oob"` | no |
 
 ## Outputs
 

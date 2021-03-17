@@ -1,25 +1,37 @@
+variable "annotation" {
+  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
+  type        = string
+  default     = ""
+}
+
 variable "client_group" {
   description = "SNMP Client Group Name"
   type        = string
   default     = "default_oob"
 }
 
-# output "client_group_id" {
-#   value = aci_rest.snmp_client_group.id
-# }
-
-variable "mgmt" {
-  description = "Options are 'inb' or 'oob'.  Define the Management Domain to reach these SNMP Clients"
+variable "description" {
+  description = "SNMP Client Group Description."
   type        = string
-  default     = "oob"
+  default     = ""
   validation {
-    condition     = (var.mgmt == "inb" || var.mgmt == "oob")
-    error_message = "The SNMP Client Group Management Domain must be 'inb' or 'oob'."
+    condition = (
+      length(var.description) >= 0 &&
+      length(var.description) <= 128 &&
+      can(regexall("[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]+", var.description))
+    )
+    error_message = "The SNMP Client Group Description can be between 0 ad 128 characters."
   }
 }
 
-variable "epg" {
-  description = "Define EPG within the Management Domain to reach these SNMP Clients"
+variable "mgmt_domain_dn" {
+  description = "The Distinguished Name for the Management Domain.\n Example: \"uni/tn-mgmt/mgmtp-default/oob-default\""
   type        = string
-  default     = "default"
+  default     = "uni/tn-mgmt/mgmtp-default/oob-default"
+}
+
+variable "name_alias" {
+  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+  type        = string
+  default     = ""
 }

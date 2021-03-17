@@ -53,10 +53,14 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | description | SNMP Destination Group Description. | `string` | `""` | no |
-| dest\_group | Create the SNMP Destination Group: Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group | `string` | `"default_oob"` | no |
+| dest\_group\_name | Create the SNMP Destination Group: Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group | `string` | `"default_oob"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| snmp\_dest\_grp | This output will provide the Distinguished Name of the SNMP Trap Destination Group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

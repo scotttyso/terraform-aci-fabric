@@ -12,8 +12,10 @@ resource "aci_rest" "snmp_trap_server" {
 {
   "snmpTrapFwdServerP": {
     "attributes": {
+      "annotation": "${var.annotation}",
       "dn": "uni/fabric/snmppol-default/trapfwdserver-[${var.snmp_server}]",
       "addr": "${var.snmp_server}",
+      "nameAlias": "${var.name_alias}",
       "port": "${var.snmp_port}"
     },
     "children": []
@@ -30,13 +32,14 @@ GUI Location:
  - Admin > Monitoring Destinations > SNMP > SNMP Monitoring Destination Group: Trap Servers
 */
 resource "aci_rest" "snmp_trap_destination" {
-  path       = "/api/node/mo/uni/fabric/snmpgroup-${var.dest_group}/trapdest-${var.snmp_server}-port-${var.snmp_port}.json"
+  path       = "/api/node/mo/${var.dest_group_dn}/trapdest-${var.snmp_server}-port-${var.snmp_port}.json"
   class_name = "snmpGroup"
   payload    = <<EOF
 {
   "snmpTrapDest": {
     "attributes": {
-      "dn": "uni/fabric/snmpgroup-${var.dest_group}/trapdest-${var.snmp_server}-port-${var.snmp_port}",
+      "annotation": "${var.annotation}",
+      "dn": "${var.dest_group_dn}/trapdest-${var.snmp_server}-port-${var.snmp_port}",
       "host": "${var.snmp_server}",
       "port": "${var.snmp_port}",
       "secName": "${var.snmp_string}",
@@ -47,7 +50,7 @@ resource "aci_rest" "snmp_trap_destination" {
       {
         "fileRsARemoteHostToEpg": {
           "attributes": {
-            "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}"
+            "tDn": "${var.mgmt_domain_dn}"
           }
         }
       }

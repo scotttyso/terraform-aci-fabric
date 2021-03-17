@@ -21,38 +21,38 @@ variable "dns_domain" {
       name_alias  = ""
     }
   }
-#  validation {
-#    condition = (
-#      var.dns_domain_default.fqdn == "no" || var.dns_domain_default.fqdn == "yes" &&
-#      can(regexall("(?:\\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*", var.dns_domain_default.domain))
-#    )
-#    error_message = "Please assign a Valid DNS Domain and set the fqdn to either 'yes' or 'no'."
-#  }
+  #  validation {
+  #    condition = (
+  #      var.dns_domain_default.fqdn == "no" || var.dns_domain_default.fqdn == "yes" &&
+  #      can(regexall("(?:\\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*", var.dns_domain_default.domain))
+  #    )
+  #    error_message = "Please assign a Valid DNS Domain and set the fqdn to either 'yes' or 'no'."
+  #  }
 }
 
 variable "dns_server" {
   description = "Add DNS Servers for domain resolution.  You can configure a maximum of two servers.  Only one can be preferred 'true'."
   type = map(object({
-    annotation  = optional(string)
-    preferred   = optional(bool)
-    server      = optional(string)
-    name_alias  = optional(string)
+    annotation = optional(string)
+    preferred  = optional(string)
+    server     = optional(string)
+    name_alias = optional(string)
   }))
   default = {
     default = {
-      annotation  = ""
-      preferred = false
-      server    = "198.18.1.1"
-      name_alias  = ""
+      annotation = ""
+      preferred  = "no"
+      server     = "198.18.1.1"
+      name_alias = ""
     }
   }
-#  validation {
-#    condition = (
-#      var.dns_server["preferred"] == true || var.dns_server["preferred"] == false &&
-#      can(regexall("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$", var.dns_server["server"]))
-#    )
-#    error_message = "The DNS Server must be a valid IPv4 Address.  And preferred should be true or false."
-#  }
+  #  validation {
+  #    condition = (
+  #      var.dns_server["preferred"] == true || var.dns_server["preferred"] == false &&
+  #      can(regexall("^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}$", var.dns_server["server"]))
+  #    )
+  #    error_message = "The DNS Server must be a valid IPv4 Address.  And preferred should be true or false."
+  #  }
 }
 
 variable "mgmt_domain_dn" {
@@ -66,17 +66,17 @@ locals {
     for k, v in var.dns_domain : k => {
       annotation  = (v.annotation != null ? v.annotation : "")
       description = (v.description != null ? v.description : "")
-      domain = coalesce(v.domain, "example.com")
-      fqdn = coalesce(v.fqdn, "no")
+      domain      = coalesce(v.domain, "example.com")
+      fqdn        = coalesce(v.fqdn, "no")
       name_alias  = (v.name_alias != null ? v.name_alias : "")
     }
   }
   dns_server = {
     for k, v in var.dns_server : k => {
-      annotation  = (v.annotation != null ? v.annotation : "")
-      preferred = coalesce(v.preferred, false)
-      server = coalesce(v.server, "198.18.1.1")
-      name_alias  = (v.name_alias != null ? v.name_alias : "")
+      annotation = (v.annotation != null ? v.annotation : "")
+      preferred  = coalesce(v.preferred, "no")
+      server     = coalesce(v.server, "198.18.1.1")
+      name_alias = (v.name_alias != null ? v.name_alias : "")
     }
   }
 }

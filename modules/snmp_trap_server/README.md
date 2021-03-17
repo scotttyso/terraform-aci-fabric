@@ -61,9 +61,10 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dest\_group | SNMP Trap Destination Group Name.  This should have already been created by the 'snmp\_dest\_grp' module | `string` | `"default_oob"` | no |
-| epg | Define EPG within the Management Domain to reach this SNMP Trap Server | `string` | `"default"` | no |
-| mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach this SNMP Trap Server | `string` | `"oob"` | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
+| dest\_group\_dn | SNMP Trap Destination Group Distinguished Name.  This should have already been created by the 'snmp\_dest\_grp' module | `string` | n/a | yes |
+| mgmt\_domain\_dn | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | security\_level | Options are (auth\|noauth\|priv)<br> - auth: Authentication and no privacy<br> - noauth: Default.  No authentication and no privacy.<br> - priv: Authentication and privacy | `string` | `"noauth"` | no |
 | snmp\_port | Port for the SNMP Trap Server.  Default is 162 | `number` | `162` | no |
 | snmp\_server | IPv4 or IPv6 Address of the SNMP Trap Server | `string` | `"198.18.1.1"` | no |

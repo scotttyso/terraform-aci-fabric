@@ -7,7 +7,7 @@ GUI Location:
  - Assign all the default Policies to this Policy Group
 */
 resource "aci_rest" "Pod_Policy_Group" {
-  path       = "/api/node/mo/uni/fabric/funcprof/podpgrp-${var.pod_pgrp}.json"
+  path       = "/api/node/mo/uni/fabric/funcprof/podpgrp-${var.ppg_name}.json"
   class_name = "fabricPodPGrp"
   payload    = <<EOF
 {
@@ -15,9 +15,9 @@ resource "aci_rest" "Pod_Policy_Group" {
     "attributes": {
       "annotation": "${var.annotation}",
       "descr": "${var.description}",
-      "dn": "uni/fabric/funcprof/podpgrp-${var.pod_pgrp}",
-      "name": "${var.pod_pgrp}",
-      "nameAlias": "${var.name_alias}",
+      "dn": "uni/fabric/funcprof/podpgrp-${var.ppg_name}",
+      "name": "${var.ppg_name}",
+      "nameAlias": "${var.name_alias}"
     },
     "children": [
       {
@@ -98,8 +98,7 @@ resource "aci_rest" "fabricRsPodPGrp" {
 {
   "fabricRsPodPGrp": {
     "attributes": {
-      "tDn": "uni/fabric/funcprof/podpgrp-${var.pod_pgrp}",
-      "status": "created"
+      "tDn": "uni/fabric/funcprof/podpgrp-${var.ppg_name}",
     },
     "children": []
   }

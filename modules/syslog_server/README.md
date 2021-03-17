@@ -54,11 +54,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| dest\_group | Syslog Destination Group Name.  This should have already been created by the 'syslog\_dest\_grp' module. | `string` | `"default_oob"` | no |
-| epg | Define EPG within the Management Domain to reach this Remote Syslog Server. | `string` | `"default"` | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
+| dest\_group\_dn | Syslog Destination Group Distinguished Name.  This should have already been created by the 'syslog\_dest\_grp' module. | `string` | n/a | yes |
 | facility | Options are (local[0-7]).  Default is local7. | `string` | `"local7"` | no |
-| mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach this Remote Syslog Server. | `string` | `"oob"` | no |
-| syslog\_name | A Descriptive Name for the Syslog Remote Destination. | `string` | `"default_oob"` | no |
+| mgmt\_domain\_dn | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| syslog\_name | A Descriptive Name for the Syslog Remote Destination. | `string` | `"server1"` | no |
 | syslog\_port | Default port for Syslog is 514. | `number` | `514` | no |
 | syslog\_server | IPv4 or IPv6 Address for the Syslog Remote Server. | `string` | `"198.18.1.1"` | no |
 | syslog\_severity | Options are (emergencies\|alerts\|critical\|errors\|warnings\|notifications\|information\|debugging).  Default is warnings.  Best practice is information. | `string` | `"information"` | no |

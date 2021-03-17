@@ -6,25 +6,27 @@ GUI Location:
  - Admin > External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}
 */
 resource "aci_rest" "syslog_destination_group" {
-  path       = "/api/node/mo/uni/fabric/slgroup-${var.dest_group}.json"
+  path       = "/api/node/mo/uni/fabric/slgroup-${var.dest_group_name}.json"
   class_name = "syslogGroup"
   payload    = <<EOF
 {
   "syslogGroup": {
     "attributes": {
-      "dn": "uni/fabric/slgroup-${var.dest_group}",
-      "name": "${var.dest_group}",
-      "descr": ""${var.description}",
+      "annotation": "${var.annotation}",
+      "dn": "uni/fabric/slgroup-${var.dest_group_name}",
+      "descr": "${var.description}",
       "format": "${var.log_format}",
       "includeMilliSeconds": "${var.incl_msec}",
-      "includeTimeZone": "${var.timezone}"
+      "includeTimeZone": "${var.timezone}",
+      "name": "${var.dest_group_name}",
+      "nameAlias": "${var.name_alias}"
     },
     "children": [
       {
         "syslogConsole": {
           "attributes": {
-            "dn": "uni/fabric/slgroup-${var.dest_group}/console",
             "adminState": "${var.console_state}",
+            "dn": "uni/fabric/slgroup-${var.dest_group_name}/console",
             "severity": "${var.console_sev}"
           },
           "children": []
@@ -33,7 +35,7 @@ resource "aci_rest" "syslog_destination_group" {
       {
         "syslogFile": {
           "attributes": {
-            "dn": "uni/fabric/slgroup-${var.dest_group}/file",
+            "dn": "uni/fabric/slgroup-${var.dest_group_name}/file",
             "adminState": "${var.local_state}",
             "severity": "${var.local_sev}"
           },
@@ -43,7 +45,7 @@ resource "aci_rest" "syslog_destination_group" {
       {
         "syslogProf": {
           "attributes": {
-            "dn": "uni/fabric/slgroup-${var.dest_group}/prof",
+            "dn": "uni/fabric/slgroup-${var.dest_group_name}/prof",
             "rn": "prof"
           },
           "children": []

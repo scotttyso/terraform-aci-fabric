@@ -53,14 +53,16 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| Description | Description for the Pod Policy Group | `string` | `"Default Policy Created by the terraform-aci provider"` | no |
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | bgp\_policy | BGP Route Reflector Policy Name | `string` | `"default"` | no |
 | coop\_policy | COOP Group Policy Name | `string` | `"default"` | no |
 | date\_time | Date and Time Policy Name | `string` | `"default"` | no |
-| isis\_poicy | ISIS Policy Name | `string` | `"default"` | no |
+| description | Description for the Pod Policy Group | `string` | `"Default Policy Created by the terraform-aci provider"` | no |
+| isis\_policy | ISIS Policy Name | `string` | `"default"` | no |
 | macsec\_policy | MACsec Policy Name | `string` | `"default"` | no |
 | mgmt\_policy | Management Access Policy Name | `string` | `"default"` | no |
-| pod\_pgrp | Pod Policy Group Name.  This will be used to assign the following policies to the switches. | `string` | `"default"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| ppg\_name | Pod Policy Group Name.  This will be used to assign the following policies to the switches. | `string` | `"default"` | no |
 | snmp\_policy | SNMP Policy Name | `string` | `"default"` | no |
 
 ## Outputs

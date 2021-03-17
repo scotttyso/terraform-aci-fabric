@@ -12,17 +12,17 @@ resource "aci_rest" "snmp_client_group" {
 {
   "snmpClientGrpP": {
     "attributes": {
+      "annotation": "${var.annotation}",
+      "descr": "${var.description}",
       "dn": "uni/fabric/snmppol-default/clgrp-${var.client_group}",
       "name": "${var.client_group}",
-      "descr": "SNMP Clients allowed on Mgmt ${var.mgmt} EPG ${var.epg}",
-      "status": "created"
+      "nameAlias": "${var.name_alias}"
     },
     "children": [
       {
         "snmpRsEpg": {
           "attributes": {
-            "tDn": "uni/tn-mgmt/mgmtp-default/${var.mgmt}-${var.epg}",
-            "status": "created"
+            "tDn": "${var.mgmt_domain_dn}",
           },
           "children": []
         }

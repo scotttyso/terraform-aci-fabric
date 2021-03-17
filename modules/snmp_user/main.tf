@@ -12,12 +12,14 @@ resource "aci_rest" "snmp_users" {
 {
   "snmpUserP": {
     "attributes": {
+      "annotation": "${var.annotation}",
+      "authKey": "${var.auth_key}",
+      "authType": "${var.auth_type}",
       "dn": "uni/fabric/snmppol-default/user-${var.snmp_user}",
       "name": "${var.snmp_user}",
+      "nameAlias": "${var.name_alias}",
       "privType": "${var.priv_type}",
-      "privKey": "${var.priv_key}",
-      "authType": "${var.auth_type}",
-      "authKey": "${var.auth_key}"
+      "privKey": "${var.priv_key}"
     },
     "children": []
   }

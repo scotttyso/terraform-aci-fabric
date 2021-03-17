@@ -1,12 +1,28 @@
-variable "dest_group" {
-  description = "Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}."
+variable "annotation" {
+  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
   type        = string
-  default     = "default_oob"
+  default     = ""
 }
 
-# output "dest_group" {
-#   value = aci_rest.syslog_destination_group.id
-# }
+variable "console_sev" {
+  description = "Options are (emergencies|alerts|critical).  Set the console logging level."
+  type        = string
+  default     = "critical"
+  validation {
+    condition     = (can(regexall("^(emergencies|alerts|critical)$", var.console_sev)))
+    error_message = "The Console Severity must be one of the following:\n (emergencies|alerts|critical)."
+  }
+}
+
+variable "console_state" {
+  description = "Options are (enabled|disabled).  Enable or disable console logging on the switches."
+  type        = string
+  default     = "enabled"
+  validation {
+    condition     = (var.console_state == "enabled" || var.console_state == "disabled")
+    error_message = "Syslog Console State Options are (enabled|disabled)."
+  }
+}
 
 variable "description" {
   description = "Syslog Destination Group Description."
@@ -22,14 +38,10 @@ variable "description" {
   }
 }
 
-variable "log_format" {
-  description = "Options are (aci|nxos).  Default is aci.  Choose whether you want the logs to be sent in NX-OS format or ACI Format."
+variable "dest_group_name" {
+  description = "Create the Syslog Destination Group: External Data Collectors > Monitoring Destinations > Syslog > {Destination Group Name}."
   type        = string
-  default     = "aci"
-  validation {
-    condition     = (var.log_format == "aci" || var.log_format == "nxos")
-    error_message = "Syslog Log Format options are (aci|nxos)."
-  }
+  default     = "default_oob"
 }
 
 variable "incl_msec" {
@@ -42,33 +54,23 @@ variable "incl_msec" {
   }
 }
 
-variable "timezone" {
-  description = "Options are (true|false).  Include the local time zone in the log timestamp."
-  type        = bool
-  default     = true
+variable "log_format" {
+  description = "Options are (aci|nxos).  Default is aci.  Choose whether you want the logs to be sent in NX-OS format or ACI Format."
+  type        = string
+  default     = "aci"
   validation {
-    condition     = (var.timezone == true || var.timezone == false)
-    error_message = "Timezone options are (true|false)."
+    condition     = (var.log_format == "aci" || var.log_format == "nxos")
+    error_message = "Syslog Log Format options are (aci|nxos)."
   }
 }
 
-variable "console_state" {
-  description = "Options are (enabled|disabled).  Enable or disable console logging on the switches."
+variable "local_sev" {
+  description = "Options are (emergencies|alerts|critical|errors|warnings|notifications|information|debugging).  Set the local logging level."
   type        = string
-  default     = "enabled"
+  default     = "information"
   validation {
-    condition     = (var.console_state == "enabled" || var.console_state == "disabled")
-    error_message = "Syslog Console State Options are (enabled|disabled)."
-  }
-}
-
-variable "console_sev" {
-  description = "Options are (emergencies|alerts|critical).  Set the console logging level."
-  type        = string
-  default     = "critical"
-  validation {
-    condition     = (can(regexall("^(emergencies|alerts|critical)$", var.console_sev)))
-    error_message = "The Console Severity must be one of the following:\n (emergencies|alerts|critical)."
+    condition     = (can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.local_sev)))
+    error_message = "The Local Severity must be one of the following:\n (emergencies|alerts|critical|errors|warnings|notifications|information|debugging)."
   }
 }
 
@@ -82,12 +84,18 @@ variable "local_state" {
   }
 }
 
-variable "local_sev" {
-  description = "Options are (emergencies|alerts|critical|errors|warnings|notifications|information|debugging).  Set the local logging level."
+variable "name_alias" {
+  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
   type        = string
-  default     = "information"
+  default     = ""
+}
+
+variable "timezone" {
+  description = "Options are (true|false).  Include the local time zone in the log timestamp."
+  type        = bool
+  default     = true
   validation {
-    condition     = (can(regexall("^(emergencies|alerts|critical|errors|warnings|notifications|information|debugging)$", var.local_sev)))
-    error_message = "The Local Severity must be one of the following:\n (emergencies|alerts|critical|errors|warnings|notifications|information|debugging)."
+    condition     = (var.timezone == true || var.timezone == false)
+    error_message = "Timezone options are (true|false)."
   }
 }

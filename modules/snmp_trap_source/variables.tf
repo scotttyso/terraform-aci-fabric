@@ -1,10 +1,21 @@
-variable "dest_group" {
-  description = "SNMP Trap Destination Group Name.  This should have already been created by the 'snmp_dest_grp' module"
+variable "annotation" {
+  description = "Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another."
   type        = string
-  default     = "default_oob"
+  default     = ""
 }
 
-variable "snmp_source" {
+variable "dest_group_dn" {
+  description = "SNMP Trap Destination Group Distinguished Name.  This should have already been created by the 'snmp_dest_grp' module"
+  type        = string
+}
+
+variable "name_alias" {
+  description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
+  type        = string
+  default     = ""
+}
+
+variable "snmp_source_name" {
   description = "Create a SNMP Source under Fabric > Fabric Policies > Policies > Monitoring > Common Policy > Callhome/Smart Callhome/SNMP/Syslog/TACACS: SNMP"
   type        = string
   default     = "default_oob"

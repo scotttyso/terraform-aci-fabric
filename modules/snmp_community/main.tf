@@ -12,9 +12,11 @@ resource "aci_rest" "snmp_community" {
 {
   "snmpCommunityP": {
     "attributes": {
-      "dn": "uni/fabric/snmppol-default/community-${var.community}",
+      "annotation": "${var.annotation}",
       "descr": "${var.description}",
-      "name": "${var.community}"
+      "dn": "uni/fabric/snmppol-default/community-${var.community}",
+      "name": "${var.community}",
+      "nameAlias": "${var.name_alias}"
     },
     "children": []
   }

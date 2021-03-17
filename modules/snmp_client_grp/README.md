@@ -53,11 +53,15 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | client\_group | SNMP Client Group Name | `string` | `"default_oob"` | no |
-| epg | Define EPG within the Management Domain to reach these SNMP Clients | `string` | `"default"` | no |
-| mgmt | Options are 'inb' or 'oob'.  Define the Management Domain to reach these SNMP Clients | `string` | `"oob"` | no |
+| description | SNMP Client Group Description. | `string` | `""` | no |
+| mgmt\_domain\_dn | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
+| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| snmp\_client\_grp | This output will provide the Distinguished Name of the SNMP Client Group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

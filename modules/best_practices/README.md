@@ -122,7 +122,7 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| disable\_remote\_ep\_learn | Options are (true\|false), to disable remote endpoint learning in VRFs containing external bridged/routed domains | `string` | `true` | no |
+| disable\_remote\_ep\_learn | Options are (true\|false), to disable remote endpoint learning in VRFs containing external bridged/routed domains | `bool` | `true` | no |
 | domain\_validation | Options are (true\|false).  Best Practice true.  APIC default false.  Validation check if a static path is added but no domain is associated to an EPG | `bool` | `true` | no |
 | ep\_loop\_action | (port-disable\|bd-learn-disable).  To enable both use 'port-disable,bd-learn-disable'.  Best practice is to have no actions AKA ''.  APIC default is 'port-disable'.  on can be:  BD Learn Disable or Port Disable. | `string` | `""` | no |
 | ep\_loop\_state | Enable or Disable, (enabled\|disabled), endpoint loop protection state.  The endpoint loop protection policy specifies how loops detected by frequent MAC moves are handled | `string` | `"enabled"` | no |
