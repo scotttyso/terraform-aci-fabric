@@ -12,7 +12,7 @@ resource "aci_rest" "SmartCallHome_Src" {
 {
   "callhomeSmartSrc": {
     "attributes": {
-      "dn": "uni/infra/moninfra-default/smartchsrc",
+      "dn": "uni/infra/moninfra-default/smartchsrc"
     },
     "children": [
       {

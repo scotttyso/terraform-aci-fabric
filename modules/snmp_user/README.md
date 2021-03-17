@@ -13,10 +13,6 @@ module "snmp_user" {
 
 This module will Add SNMP Users in the default SNMP Policy.
 
-These resources are created:
-
-* [SNMP User](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

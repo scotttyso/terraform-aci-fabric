@@ -133,11 +133,12 @@ module "fabric_smart_callhome_dest" {
   # contact_info    = "admins@example.com"      # Using the default value.
   # contract_id     = "55555555"                # Using the default value.
   # customer_id     = "55555555"                # Using the default value.
-  description     = "Default Smart CallHome Destination Group"
+  description = "Default Smart CallHome Destination Group"
   # dest_group_name = "default"                 # Using the default value.
   # email_from      = "admins@example.com"      # Using the default value.
   # email_reply     = "admins@example.com"      # Using the default value.
   # email_to        = "admins@example.com"      # Using the default value.
+  # format          = "short-txt"               # Using the default value.
   # phone_number    = "+1 555-555-5555"         # Using the default value.
   # receiver        = "default"                 # Using the default value.
   # street_addr     = "One Cisco Way, San Jose, CA 90210" # Using the default value.
@@ -151,15 +152,24 @@ output "fabric_smart_callhome_dest" {
 }
 
 module "fabric_smart_callhome_source" {
-  depends_on  = [module.fabric_smart_callhome_dest]
-  source      = "../modules/smart_callhome_source"
+  depends_on = [module.fabric_smart_callhome_dest]
+  source     = "../modules/smart_callhome_source"
   # insert required variables here
-  dest_group_dn   = module.fabric_smart_callhome_dest.smart_callhome_dest
+  dest_group_dn = module.fabric_smart_callhome_dest.smart_callhome_dest
 }
 
 #
 # *** SNMP CONFIGURATION ***
 #
+
+module "fabric_snmp_policy_default" {
+  source = "../modules/snmp_policy_default"
+  # insert required variables here
+  # admin_state            = "enabled"    # Using the default value.
+  description   = "ACI SNMP Policy Default"
+  # snmp_contact  = "admins@example.com"  # Using the default value.
+  # snmp_location = "Data Center"         # Using the default value.
+}
 
 module "fabric_snmp_client_grp" {
   source = "../modules/snmp_client_grp"

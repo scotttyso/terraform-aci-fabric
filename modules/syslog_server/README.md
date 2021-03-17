@@ -13,10 +13,6 @@ module "syslog_server" {
 
 This module will Create a Syslog Remote Destinationp in the External Data Collectors > Monitoring Destinations > Syslog.
 
-These resources are created:
-
-* [Syslog Remote Destination](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 API Information:
 
 * Class: "syslogRemoteDest"

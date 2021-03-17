@@ -51,6 +51,7 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| admin\_state | Options are [enabled\|disabled].  Enable or disable the Smart CallHome Destination Group. | `string` | `"enabled"` | no |
 | annotation\_callhome | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | annotation\_profile | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
 | contact\_info | Smart CallHome Contact Information.  Typically the | `string` | `"admins@example.com"` | no |
@@ -61,8 +62,10 @@ No Modules.
 | email\_from | Email Address to use for sending notifications. | `string` | `"admins@example.com"` | no |
 | email\_reply | For Email Notifications Email Address to use for reply. | `string` | `"admins@example.com"` | no |
 | email\_to | For Email Notifications Email Address to send to. | `string` | `"admins@example.com"` | no |
+| format | The Call Home destination message format.  Options are (xml\|aml\|short-txt).  Default is xml. | `string` | `"short-txt"` | no |
 | mgmt\_domain\_dn | The Distinguished Name for the Management Domain.<br> Example: "uni/tn-mgmt/mgmtp-default/oob-default" | `string` | `"uni/tn-mgmt/mgmtp-default/oob-default"` | no |
-| name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| name\_alias\_callhome | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| name\_alias\_profile | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
 | phone\_number | Phone Number for Contact Group. | `string` | `"+1 555-555-5555"` | no |
 | receiver | Smart CallHome Receiver. | `string` | `"default"` | no |
 | site\_id | Site ID Assigned in the Contract. | `string` | `"55555555"` | no |
@@ -72,5 +75,7 @@ No Modules.
 
 ## Outputs
 
-No output.
+| Name | Description |
+|------|-------------|
+| smart\_callhome\_dest | This output will provide the Distinguished Name of the Smart CallHome Destination Group. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

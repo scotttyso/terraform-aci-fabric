@@ -1,21 +1,17 @@
-# snmp_community - SNMP Community Terraform Module - aci_rest
+# snmp_policy_default - SNMP Policy default Terraform Module - aci_rest
 
 ## Usage
 
 ```hcl
-module "snmp_community" {
+module "snmp_policy_default" {
 
-  source = "terraform-aci-fabric//modules/snmp_community"
+  source = "terraform-aci-fabric//modules/snmp_policy_default"
 
   # omitted...
 }
 ```
 
-This module will Add SNMP Communities to the default SNMP Policy.
-
-These resources are created:
-
-* [SNMP Communities](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
+This module will Global settings for the SNMP Policy "default".
 
 ## APIC Reference Information
 
@@ -53,10 +49,12 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| admin\_state | An SNMP Community String.  The community can be between 0 and 32 characters. | `string` | `"enabled"` | no |
 | annotation | Annotation is a Tag.  Tags define the label parameters and enables the classifying of the objects that can and cannot communicate with one another. | `string` | `""` | no |
-| community | An SNMP Community String.  The community can be between 0 and 32 characters. | `string` | n/a | yes |
-| description | SNMP Community Description. | `string` | `""` | no |
+| description | A Description for the SNMP Policy default. | `string` | `""` | no |
 | name\_alias | A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed. | `string` | `""` | no |
+| snmp\_contact | A Contact for the SNMP Policy default. | `string` | `""` | no |
+| snmp\_location | A Location for the SNMP Policy default. | `string` | `""` | no |
 
 ## Outputs
 

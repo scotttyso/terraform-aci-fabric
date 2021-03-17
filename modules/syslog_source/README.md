@@ -13,10 +13,6 @@ module "syslog_source" {
 
 This module will Create a Syslog Source in the Fabric > Fabric Policies > Policies > Monitoring > Common Policies > Callhome/Smart Callhome/SNMP/Syslog/TACACS:Smart CallHome > Create Syslog Source.
 
-These resources are created:
-
-* [Syslog Source](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 API Information:
 
 * Class: "syslogSrc"

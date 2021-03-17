@@ -98,6 +98,18 @@ variable "email_to" {
   }
 }
 
+variable "format" {
+  type        = string
+  description = "The Call Home destination message format.  Options are (xml|aml|short-txt).  Default is xml."
+  default     = "short-txt"
+  validation {
+    condition = (
+      can(regexall("^(xml|aml|short-txt)$", var.format))
+    )
+    error_message = "Smart CallHome Message format options are (xml|aml|short-txt)."
+  }
+}
+
 variable "name_alias_callhome" {
   description = "A changeable name for a given object. While the name of an object, once created, cannot be changed, the Alias is a field that can be changed."
   type        = string

@@ -6,9 +6,9 @@ GUI Location:
  - Fabric > Fabric Policies > Policies > Pod > SNMP > default: Contact/Location
 */
 resource "aci_rest" "snmp_policy_default" {
-	path		= "/api/node/mo/uni/fabric/snmppol-default.json"
-	class_name	= "snmpPol"
-	payload		= <<EOF
+  path       = "/api/node/mo/uni/fabric/snmppol-default.json"
+  class_name = "snmpPol"
+  payload    = <<EOF
 {
     "snmpPol": {
         "attributes": {
@@ -18,7 +18,7 @@ resource "aci_rest" "snmp_policy_default" {
             "descr": "${var.description}This is the default SNMP Policy",
             "dn": "uni/fabric/snmppol-default",
             "loc": "${var.snmp_location}",
-            "nameAlias": "${var.nameAlias}",
+            "nameAlias": "${var.name_alias}",
         },
         "children": []
     }

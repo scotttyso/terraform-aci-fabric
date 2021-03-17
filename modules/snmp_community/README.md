@@ -13,10 +13,6 @@ module "snmp_community" {
 
 This module will Add SNMP Communities to the default SNMP Policy.
 
-These resources are created:
-
-* [SNMP Communities](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

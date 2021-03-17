@@ -13,10 +13,6 @@ module "snmp_trap_server" {
 
 This module will deploy the recommended Fabric characteristics for the Fabric Policy Configuration.
 
-These resources are created
-
-* [SNMP Trap Server](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

@@ -13,10 +13,6 @@ module "snmp_dest_grp" {
 
 This module will Create a SNMP Trap Destination Group.
 
-These resources are created
-
-* [SNMP Destination Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

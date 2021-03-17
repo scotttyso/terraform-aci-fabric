@@ -13,10 +13,6 @@ module "snmp_trap_source" {
 
 This module will Create a SNMP Trap Source.
 
-These resources are created
-
-* [SNMP Trap Source](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

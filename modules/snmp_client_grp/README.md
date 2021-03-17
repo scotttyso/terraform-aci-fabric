@@ -13,10 +13,6 @@ module "snmp_client_grp" {
 
 This module will Create a SNMP Client Group in the default SNMP Policy.
 
-These resources are created:
-
-* [SNMP Client Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.

@@ -13,10 +13,6 @@ module "syslog_dest_grp" {
 
 This module will Create a Syslog Destination Group in the External Data Collectors > Monitoring Destinations > Syslog.
 
-These resources are created:
-
-* [Syslog Destination Group](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest)
-
 ## APIC Reference Information
 
 Use the Class or Distinguished Name to verify in the API.
