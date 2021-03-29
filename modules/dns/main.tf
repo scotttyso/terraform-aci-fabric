@@ -1,5 +1,27 @@
 /*
 API Information:
+ - Class: "dnsRsProfileToEpg"
+ - Distinguished Name: "uni/tn-mgmt/mgmtp-default/{Mgmt_Domain}-{EPG}"
+GUI Location:
+ - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
+*/
+resource "aci_rest" "DNS_Mgmt_Domain" {
+  path       = "/api/node/mo/uni/fabric/dnsp-default.json"
+  class_name = "dnsRsProfileToEpg"
+  payload    = <<EOF
+{
+  "dnsRsProfileToEpg": {
+    "attributes": {
+      "tDn": "${var.mgmt_domain_dn}"
+    },
+    "children": []
+  }
+}
+  EOF
+}
+
+/*
+API Information:
  - Class: "dnsDomain"
  - Distinguished Name: "uni/fabric/dnsp-default/dom-[{Domain}]"
 GUI Location:
@@ -19,28 +41,6 @@ resource "aci_rest" "dns_domain" {
       "isDefault": "${each.value["fqdn"]}",
       "name": "${each.value["domain"]}",
       "nameAlias": "${each.value["name_alias"]}",
-    },
-    "children": []
-  }
-}
-  EOF
-}
-
-/*
-API Information:
- - Class: "dnsRsProfileToEpg"
- - Distinguished Name: "uni/tn-mgmt/mgmtp-default/{Mgmt_Domain}-{EPG}"
-GUI Location:
- - Fabric > Fabric Policies > Policies > Global > DNS Profiles > default: Management EPG
-*/
-resource "aci_rest" "DNS_Mgmt_Domain" {
-  path       = "/api/node/mo/uni/fabric/dnsp-default.json"
-  class_name = "dnsRsProfileToEpg"
-  payload    = <<EOF
-{
-  "dnsRsProfileToEpg": {
-    "attributes": {
-      "tDn": "${var.mgmt_domain_dn}"
     },
     "children": []
   }
